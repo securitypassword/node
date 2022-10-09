@@ -46,7 +46,7 @@ function getNameById(id){
   var res=-1
   for(var reg in users){
     if(reg==id){
-      res= await users.get(reg);
+      res= users.get(reg);
     }
   }
   return res
