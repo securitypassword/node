@@ -43,11 +43,7 @@ const db = CyclicDB("bewildered-moth-cardiganCyclicDB")
 let users = db.collection('user')
 //const users=require("./db/users.json")
 function getNameById(id){
-  var res=-1
-  for(var reg in users){
-    if(reg==id){
-      res= users.get(reg);
-    }
+  var res = await users.get(id)
   }
   return res
 }
