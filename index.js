@@ -40,7 +40,7 @@ const CyclicDb = require("cyclic-db")
 const db = CyclicDB("bewildered-moth-cardiganCyclicDB")
 
  //users
-const users=require("./db/users.json");
+const users=db.collection("user");
 
 function getNameById(id){
   var res=-1
@@ -80,8 +80,16 @@ app.get("/register", (req, res, next) => {
   var usu = de(req.query.user);
   var pass = de(req.query.pass);
   var resp=""
-  if(getByName(usu)==-1){
+  if(getByName(usu)==-1&&usu!=""&&pass!=""){
     console.log("register "+usu+" "+pass);
+    var newId= Math.random()*10000
+    while(getNameById(newId)!=-1){
+      newId= Math.random()*10000
+    }
+    await users.set(newId, {
+      usu_name: en(usu),
+      usu_mpassword: en(pass)
+    })
     resp="success"
   }else{
     resp="successn't"
@@ -94,7 +102,7 @@ app.get("/register", (req, res, next) => {
 
 
  //registers
-const regs=require("./db/registers.json");
+const regsdb.collection("register");
 
 function getRegsFromId(id){
   var regIds = []
