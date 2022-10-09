@@ -14,7 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "crypto-js": "^4.1.1",
-    "cyclic-dynamodb": "^0.0.27",
+    "cyclic-dynamodb": "^0.0.21",
     "express": "^4.18.1",
     "requirejs": "^2.3.6"
   }
