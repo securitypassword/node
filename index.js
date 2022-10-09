@@ -40,7 +40,7 @@ const CyclicDB = require("cyclic-dynamodb")
 const db = new CyclicDB("bewildered-moth-cardiganCyclicDB")
 
  //users
-let users = db.set('user')
+let users = db.collection('user')
 //const users=require("./db/users.json")
 function getNameById(id){
   var res=-1
