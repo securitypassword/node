@@ -72,7 +72,6 @@ app.get("/login", (req, res, next) => {
     }
   }
   console.log(db)
-  resp=db
   res.json({
     data: resp,
     msg: "login"
