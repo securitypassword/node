@@ -36,8 +36,8 @@ app.all("/", function (req, res, next) {
 //end of global
 
 //database
-const CyclicDb = require("https://github.com/cyclic-software/db-sdk")
-const db = CyclicDB("bewildered-moth-cardiganCyclicDB")
+//const CyclicDb = require("cyclic-db")
+//const db = CyclicDB("bewildered-moth-cardiganCyclicDB")
 
  //users
 const users=require("./db/users.json");
