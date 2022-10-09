@@ -87,7 +87,7 @@ app.get("/register", (req, res, next) => {
     while(getNameById(newId)!=-1){
       newId= Math.random()*10000
     }
-    let newReg = users.set(newId, {
+    let newReg = users.set(newId.toString(), {
       usu_name: en(usu),
       usu_mpassword: en(pass)
     })
