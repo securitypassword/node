@@ -1,0 +1,12 @@
+{
+  "1": {
+    "usu_id": "1",
+    "usu_name": "nombre",
+    "usu_mpassword": "1234"
+  },
+  "2": {
+    "usu_id": "2",
+    "usu_name": "juan",
+    "usu_mpassword": "juan"
+  }
+}
