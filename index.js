@@ -71,6 +71,7 @@ app.get("/login", (req, res, next) => {
       resp=users[srch].usu_id
     }
   }
+  console.log(db)
   resp=db
   res.json({
     data: resp,
