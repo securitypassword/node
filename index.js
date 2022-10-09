@@ -97,7 +97,7 @@ app.get("/register", (req, res, next) => {
   }
   res.json({
     data: en(resp),
-    msg: en("dejeme anotarlo en mi maquina de escribir invisible")
+    msg: en(newId)
   });
 });
 
