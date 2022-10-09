@@ -83,9 +83,9 @@ app.get("/register", (req, res, next) => {
   var resp=""
   if(getByName(usu)==-1&&usu!=""&&pass!=""){
     console.log("register "+usu+" "+pass);
-    var newId= Math.random()*10000
-    while(getNameById(newId)!=-1){
-      newId= Math.random()*10000
+    var newId= Math.round(Math.random())*10000
+    while(getNameById(newId)!=-1&&getByName(usu)!=-1){
+      newId= Math.round(Math.random())*10000
     }
     newId=newId.toString()
     let newReg = users.set(newId, {
