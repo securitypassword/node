@@ -104,7 +104,8 @@ app.get("/register", (req, res, next) => {
 
 
  //registers
-const regs=db.collection("register");
+//const regs=db.collection("register");
+const regs=require("./db/registers.json")
 
 function getRegsFromId(id){
   var regIds = []
