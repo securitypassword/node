@@ -36,7 +36,7 @@ app.all("/", function (req, res, next) {
 //end of global
 
 //database
-const CyclicDB = require('cyclic-dynamodb')
+const CyclicDb = require("cyclic-dynamodb")
 const db = CyclicDB("bewildered-moth-cardiganCyclicDB")
 
  //users
