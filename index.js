@@ -37,7 +37,7 @@ app.all("/", function (req, res, next) {
 
 //database
 const CyclicDB = require("cyclic-dynamodb")
-const db = CyclicDB("bewildered-moth-cardiganCyclicDB")
+const db = new CyclicDB("bewildered-moth-cardiganCyclicDB")
 
  //users
 const users=db.collection("user");
