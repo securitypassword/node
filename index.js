@@ -49,6 +49,10 @@ function getNameById(id){
 function getByName(name){
   var res=-1
   res=users.index("usu_name").find(name)
+  console.log(res)
+  if(res!=-1){
+    res=res.usu_id
+  }
   return res
 }
 
@@ -62,7 +66,6 @@ app.get("/login", (req, res, next) => {
       resp=users.get(srch).usu_id
     }
   }
-  console.log(db)
   res.json({
     data: resp,
     msg: "login"
