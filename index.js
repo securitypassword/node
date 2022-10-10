@@ -49,7 +49,7 @@ function getNameById(id){
 function getByName(name){
   var res=-1
   for(var reg in users){
-    if(users[reg].usu_name==name){
+    if(users.get(reg).usu_name==name){
       res=reg;
     }
   }
@@ -62,8 +62,8 @@ app.get("/login", (req, res, next) => {
   var srch=getByName(usu);
   console.log(usu+" usu?");
   if(srch!=-1){
-    if(de(req.query.pass)==users[srch].usu_mpassword){
-      resp=users[srch].usu_id
+    if(de(req.query.pass)==users.get(srch).usu_mpassword){
+      resp=users.get(srch).usu_id
     }
   }
   console.log(db)
