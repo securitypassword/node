@@ -48,7 +48,7 @@ function getNameById(id){
 }
 function getByName(name){
   var res=-1
-  res=users.index("usu_name").find(reg)
+  res=users.index("usu_name").find(name)
   return res
 }
 
