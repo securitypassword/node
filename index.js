@@ -50,8 +50,10 @@ function getByName(name){
   var res=-1
   res=users.index("usu_name").find(name)
   console.log(res+" get by name")
-  if(res!=-1){
-    res=res.usu_id
+  if(res!=undefined){
+    res=res.usu_id.toString()
+  }else{
+    res=-1
   }
   return res
 }
@@ -62,8 +64,9 @@ app.get("/login", (req, res, next) => {
   var srch=getByName(usu).toString();
   console.log(usu+" usu?");
   if(srch!=-1){
-    if(de(req.query.pass)==users.get(srch).usu_mpassword){
+    if(de(req.query.pass)==users.get(srch).usu_mpassword.toString()){
       resp=users.get(srch).usu_id
+      console.log(resp+" id login")
     }
   }
   res.json({
