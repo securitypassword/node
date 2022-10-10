@@ -49,6 +49,7 @@ function getNameById(id){
 function getByName(name){
   var res=-1
   for(var reg in users){
+    console.log(users.get(reg))
     if(users.get(reg).usu_name==name){
       res=reg;
     }
