@@ -44,7 +44,6 @@ let users = db.collection('user')
 //const users=require("./db/users.json")
 function getNameById(id){
   var res = users.get(id)
-  }
   return res
 }
 function getByName(name){
