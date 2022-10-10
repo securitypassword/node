@@ -49,7 +49,7 @@ function getNameById(id){
 function getByName(name){
   var res=-1
   res=users.index("usu_name").find(name)
-  console.log(res)
+  console.log(res+" get by name")
   if(res!=-1){
     res=res.usu_id
   }
