@@ -59,7 +59,7 @@ function getByName(name){
 app.get("/login", (req, res, next) => {
   var usu = de(req.query.user);
   var resp=""
-  var srch=getByName(usu);
+  var srch=getByName(usu).toString();
   console.log(usu+" usu?");
   if(srch!=-1){
     if(de(req.query.pass)==users.get(srch).usu_mpassword){
