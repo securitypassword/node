@@ -50,7 +50,8 @@ function getByName(name){
   var res=-1
   res=users.index("usu_name").find(name)
   console.log(res+" get by name")
-  if(res!=undefined){
+  if(res!=void(0)){
+    console.log("get by name "+res)
     res=res.toString()
     console.log("get by name json "+res)
     res=res.usu_id.toString()
