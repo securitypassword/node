@@ -78,7 +78,8 @@ app.get("/register", (req, res, next) => {
   var usu = de(req.query.user);
   var pass = de(req.query.pass);
   var resp=""
-  if(getByName(usu)!=undefined&&usu!=""&&pass!=""){
+  var getter=getByName(usu)
+  if(getter!=undefined&&usu!=""&&pass!=""){
     console.log("register "+usu+" "+pass);
     var newId= Math.round(Math.random()*10000)
     while(getNameById(newId)!=-1&&getByName(usu)!=-1){
