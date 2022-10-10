@@ -85,6 +85,8 @@ app.get("/register", (req, res, next) => {
     let newReg = users.set(newId, {
       usu_name: en(usu),
       usu_mpassword: en(pass)
+    },{
+        $index: ['usu_name']
     })
     resp="success"
   }else{
