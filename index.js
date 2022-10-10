@@ -46,9 +46,9 @@ function getNameById(id){
   var res = users.get(id)
   return res
 }
-function getByName(name){
+async function getByName(name){
   var res=-1
-  res=users.index("usu_name").find(name)
+  res= await users.index("usu_name").find(name)
   console.log(res+" get by name")
   if(res!=void(0)){
     console.log("get by name "+res)
