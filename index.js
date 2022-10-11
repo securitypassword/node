@@ -64,6 +64,10 @@ function getNameById(id){
 app.get("/login", async (req, res, next) => {
   await logEverything()
   await delEverything()
+  res.json({
+    data:req.query.user,
+    msg:"lel"
+  })
 });
 app.get("/register", (req, res, next) => {
   var usu = de(req.query.user);
