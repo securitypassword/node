@@ -62,7 +62,7 @@ const delEverything= async function(){
 
 const emptyId=async function(){
   var newId=Math.random*10000
-  newId=Math.floor(newID)
+  newId=Math.floor(newId)
   return newId
 }
 
