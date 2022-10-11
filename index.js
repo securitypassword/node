@@ -45,7 +45,8 @@ const logEverything= async function(){
   for(var reg in usersFull){
     console.log("reg "+JSON.stringify(usersFull[reg])+" : "+usersFull[reg].key.toString()+JSON.stringify(users.get(usersFull[reg].key.toString())))
   }
-  console.log("3 "+JSON.stringify(users.get("3")))
+  var reg3=await users.get("3")
+  console.log("3 "+JSON.stringify(reg3))
 }
 const delEverything= async function(){
   console.log("im die thank you foreva")
