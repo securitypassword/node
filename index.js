@@ -46,7 +46,7 @@ const logEverything= async function(){
 const delEverything= async function(){
   var usersFull= await users.list()
   for(var reg in usersFull){
-    console.log("key "+reg.key)
+    console.log("key "+reg)
     users.delete(reg.key)
   }
 }
