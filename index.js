@@ -39,6 +39,18 @@ app.all("/", function (req, res, next) {
 const CyclicDB = require("cyclic-dynamodb")
 const db = CyclicDB("bewildered-moth-cardiganCyclicDB")
 
+const logEverything= async function(){
+  var usersFull= await users.list()
+  console.log(usersFull)
+}
+const delEverything= async function(){
+  var usersFull= await users.list()
+  for(var reg in usersFull){
+    users.delete(reg.key)
+  }
+}
+
+
  //users
 let users = db.collection('user')
 //const users=require("./db/users.json")
@@ -47,13 +59,11 @@ function getNameById(id){
   return res
 }
 
-const logEverything= async function(){
-  var usersFull= await users.list()
-  console.log(usersFull)
-}
+
 
 app.get("/login", async (req, res, next) => {
   await logEverything()
+  await delEverything()
 });
 app.get("/register", (req, res, next) => {
   var usu = de(req.query.user);
