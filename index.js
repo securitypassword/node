@@ -46,8 +46,10 @@ const logEverything= async function(){
 const delEverything= async function(){
   var usersFull= await users.list()
   usersFull=usersFull.results
-  for(var reg in usersFull)
-    console.log("usu "+reg.toString())
+  for(var reg in usersFull){
+    console.log("num "+reg.toString())
+    console.log("usu "+usersFull[reg].toString())
+  }
   users.delete('775.5248405884552')
 }
 
