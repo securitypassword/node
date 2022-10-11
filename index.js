@@ -49,9 +49,9 @@ const delEverything= async function(){
   for(var reg in usersFull){
     console.log("num "+reg.toString())
     console.log("key "+usersFull[reg].key.toString())
+    users.delete(usersFull[reg].key.toString())
     console.log("usu "+JSON.stringify(usersFull[reg]))
   }
-  users.delete('775.5248405884552')
 }
 
 
