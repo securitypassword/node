@@ -55,7 +55,7 @@ const delEverything= async function(){
   }
 }
 const registerUser=async function(){
-  let newUser=('3', {
+  let newUser=users.set('3', {
     usu_name:'demma',
     usu_mpassword:'me girl'
     },{
@@ -71,8 +71,8 @@ let users = db.collection('user')
 
 
 app.get("/login", async (req, res, next) => {
-  await logEverything()
   await registerUser()
+  await logEverything()
   res.json({
     data:req.query.user,
     msg:"lel"
