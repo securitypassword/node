@@ -42,7 +42,7 @@ const db = CyclicDB("bewildered-moth-cardiganCyclicDB")
 const logEverything= async function(){
   var usersFull= await users.list()
   for(var reg in usersFull){
-    console.log("reg "+usersFull[reg].toString()+" : "+"usersFull[reg].props.toString()")
+    console.log("reg "+reg+usersFull[reg].toString()+" : "+"usersFull[reg].props.toString()")
   }
 }
 const delEverything= async function(){
