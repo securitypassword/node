@@ -73,7 +73,6 @@ let users = db.collection('user')
 
 
 app.get("/login", async (req, res, next) => {
-  await registerUser()
   await logEverything()
   res.json({
     data:req.query.user,
