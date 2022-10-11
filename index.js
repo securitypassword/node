@@ -44,6 +44,7 @@ const logEverything= async function(){
   console.log(usersFull)
 }
 const delEverything= async function(){
+  console.log("im die thank you foreva")
   var usersFull= await users.list()
   usersFull=usersFull.results
   for(var reg in usersFull){
@@ -52,6 +53,15 @@ const delEverything= async function(){
     users.delete(usersFull[reg].key.toString())
     console.log("usu "+JSON.stringify(usersFull[reg]))
   }
+}
+const registerUser=async function(){
+  let newUser=('3', {
+    usu_name:'demma',
+    usu_mpassword:'me girl'
+    },{
+    $index: ['usu_name']
+  })    
+  console.log("register "+newUser)
 }
 
 
@@ -62,7 +72,7 @@ let users = db.collection('user')
 
 app.get("/login", async (req, res, next) => {
   await logEverything()
-  await delEverything()
+  await registerUser()
   res.json({
     data:req.query.user,
     msg:"lel"
