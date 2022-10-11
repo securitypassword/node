@@ -61,7 +61,7 @@ const registerUser=async function(){
     },{
     $index: ['usu_name']
   })    
-  console.log("register "+newUser)
+  console.log("register "+newUser.toString())
 }
 
 
