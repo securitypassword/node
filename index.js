@@ -59,6 +59,13 @@ const delEverything= async function(){
     console.log("usu "+JSON.stringify(usersFull[reg]))
   }
 }
+
+const emptyId=async function(){
+  var newId=Math.random*10000
+  newId=Math.floor(newID)
+  return newId
+}
+
 const registerUser=async function(){
   let newUser=users.set('3', {
     usu_name:'demma',
@@ -84,6 +91,10 @@ app.get("/login", async (req, res, next) => {
 });
 app.get("/register", (req, res, next) => {
   var usu = de(req.query.user);
+  res.json({
+    data:emptyId().toString,
+    msg:""
+  })
 });
 
 
