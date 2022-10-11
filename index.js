@@ -46,63 +46,17 @@ function getNameById(id){
   var res = users.get(id)
   return res
 }
-async function getByName(name){
-  var res=-1
-  res= await users.index("usu_name").find(name)
-  console.log(res+" get by name")
-  if(res!=void(0)){
-    console.log("get by name "+res)
-    res=res.toString()
-    console.log("get by name json "+res)
-    res=res.usu_id.toString()
-  }else{
-    res=-1
-  }
-  return res
+
+const logEverything= async function(){
+  var usersFull= await users.list()
+  console.log(usersFull)
 }
 
 app.get("/login", (req, res, next) => {
-  var usu = de(req.query.user);
-  var resp=""
-  var srch=getByName(usu).toString();
-  console.log(usu+" usu?");
-  if(srch!=-1){
-    if(de(req.query.pass)==users.get(srch).usu_mpassword.toString()){
-      resp=users.get(srch).usu_id
-      console.log(resp+" id login")
-    }
-  }
-  res.json({
-    data: resp,
-    msg: "login"
-  });
+  logEverything()
 });
 app.get("/register", (req, res, next) => {
   var usu = de(req.query.user);
-  var pass = de(req.query.pass);
-  var resp=""
-  var getter=getByName(usu)
-  if(getter!=undefined&&usu!=""&&pass!=""){
-    console.log("register "+usu+" "+pass);
-    var newId= Math.round(Math.random()*10000)
-    while(getNameById(newId)!=-1&&getByName(usu)!=-1){
-      newId= Math.round(Math.random()*10000)
-    }
-    newId=newId.toString()
-    let newReg = users.set(newId, {
-      usu_name: en(usu),
-      usu_mpassword: en(pass)
-    },{
-        $index: ['usu_name']
-    })
-    resp="success"
-  }else{
-    resp="successn't"
-  }
-  res.json({
-    data: en(resp),
-    msg: en(newId)
-  });
 });
 
 
@@ -110,27 +64,9 @@ app.get("/register", (req, res, next) => {
 //const regs=db.collection("register");
 const regs=require("./db/registers.json")
 
-function getRegsFromId(id){
-  var regIds = []
-  for(var reg in regs){
-    if(regs[reg].usu_id==id){
-      regIds.push(reg)
-    }
-  }
-  return regIds
-}
-
 app.get("/getRegisters", (req, res, next) => {
   var usu_id = req.query.usu_id;
-  var usu_regs=getRegsFromId(usu_id)
-  var resp=[]
-  for(var r in usu_regs){
-    resp.push('"'+usu_regs[r]+'":'+JSON.stringify(regs[usu_regs[r]]))
-  }
-  res.json({
-    data: en("{"+resp.toString()+"}"),
-    msg: "regs"
-  });
+
 });
 //end of database
 
