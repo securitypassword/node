@@ -92,7 +92,7 @@ app.get("/login", async (req, res, next) => {
 app.get("/register", (req, res, next) => {
   var usu = de(req.query.user);
   res.json({
-    data:emptyId().toString,
+    data:en(emptyId().toString),
     msg:""
   })
 });
