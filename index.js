@@ -46,6 +46,7 @@ const logEverything= async function(){
 const delEverything= async function(){
   var usersFull= await users.list()
   for(var reg in usersFull){
+    console.log("key "+reg.key)
     users.delete(reg.key)
   }
 }
@@ -54,11 +55,6 @@ const delEverything= async function(){
  //users
 let users = db.collection('user')
 //const users=require("./db/users.json")
-function getNameById(id){
-  var res = users.get(id)
-  return res
-}
-
 
 
 app.get("/login", async (req, res, next) => {
