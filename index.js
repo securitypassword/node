@@ -52,8 +52,8 @@ const logEverything= async function(){
   console.log(usersFull)
 }
 
-app.get("/login", (req, res, next) => {
-  logEverything()
+app.get("/login", async (req, res, next) => {
+  await logEverything()
 });
 app.get("/register", (req, res, next) => {
   var usu = de(req.query.user);
