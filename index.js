@@ -151,8 +151,7 @@ app.get("/register", async (req, res, next) => {
 
 
  //registers
-const regs=db.collection("register");
-const regs=require("./db/registers.json")
+let regs = db.collection('registers')
 
 const registersEmptyId=async function(){
   var newId=parseInt(Math.random()*10000)
