@@ -95,10 +95,10 @@ app.get("/login", async (req, res, next) => {
     msg:"lel"
   })
 });
-app.get("/register", (req, res, next) => {
+app.get("/register", async (req, res, next) => {
   var usu = de(req.query.user);
   var pass = de(req.query.pass);
-  registerUser(usu,pass)
+  await registerUser(usu,pass)
   res.json({
     data:en("registered"),
     msg:""
