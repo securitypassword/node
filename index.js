@@ -73,7 +73,7 @@ const emptyId=async function(){
 }
 
 const registerUser=async function(name,mpass){
-  let newUser=users.set(emptyId().toString(), {
+  let newUser= await users.set(emptyId().toString(), {
     usu_name:name,
     usu_mpassword:mpass
     },{
