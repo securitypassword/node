@@ -86,14 +86,16 @@ const registerUser=async function(name,mpass){
 const loginUser=async function(name,mpass){
   let logUser= await users.index("usu_name").find(name)
   logUser=logUser.results[0]
+  if(await userExists(name)){
+    logUser=logUser.props
+  }
   console.log(logUser)
   return logUser
 }
 const userExists=async function(name){
   let logUser= await users.index("usu_name").find(name)
   logUser=logUser.results[0]
-  console.log(logUser)
-  return logUser!=null
+  return logUser!=void(0)
 }
 
 let users = db.collection('user')
