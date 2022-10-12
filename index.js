@@ -74,7 +74,7 @@ const usersEmptyId=async function(){
 }
 
 const registerUser=async function(name,mpass){
-  let newUser= await users.set(usersEmptyId().toString(), {
+  let newUser= await users.set(await usersEmptyId().toString(), {
     usu_name:name,
     usu_mpassword:mpass
     },{
@@ -84,13 +84,16 @@ const registerUser=async function(name,mpass){
 }
 
 const loginUser=async function(name,mpass){
+  var id="-1"
   let logUser= await users.index("usu_name").find(name)
   logUser=logUser.results[0]
   if(await userExists(name)){
-    logUser=logUser.props
+    if(logUser.props.usu_mpassword==mpass){
+      id=logUser.key.toString()
+    }
   }
-  console.log(logUser)
-  return logUser
+  console.log(logUser+" "+id)
+  return id
 }
 const userExists=async function(name){
   let logUser= await users.index("usu_name").find(name)
