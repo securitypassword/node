@@ -150,6 +150,11 @@ app.get("/getRegisters", (req, res, next) => {
   var usu_id = req.query.usu_id;
 
 });
+
+
+app.get("/savePass", async (req, res, next) => {
+  var usu_id=req.query.usu_id
+});
 //end of database
 
 //create password
