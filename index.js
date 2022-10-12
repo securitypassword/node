@@ -89,7 +89,7 @@ const loginUser=async function(name,mpass){
   logUser=logUser.results[0]
   if(await userExists(name)){
     console.log(JSON.stringify(logUser)+" lol "+mpass+JSON.stringify(logUser.props.usu_mpassword).toString())
-    if(JSON.stringify(logUser.props.usu_mpassword)===mpass){
+    if(JSON.stringify(logUser.props.usu_mpassword)==mpass){
       id=logUser.key.toString()
       console.log(logUser.toString()+" uwu "+id)
     }
