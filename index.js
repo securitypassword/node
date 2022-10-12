@@ -115,6 +115,8 @@ let users = db.collection('user')
 
 
 app.get("/login", async (req, res, next) => {
+  await logEverything()
+
   var usu = de(req.query.user);
   var pass = de(req.query.pass);
   var login= await loginUser(usu,pass)
