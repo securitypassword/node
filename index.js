@@ -74,7 +74,9 @@ const usersEmptyId=async function(){
 }
 
 const registerUser=async function(name,mpass){
-  let newUser= await users.set(await usersEmptyId().toString(), {
+  var id=await usersEmptyId()
+  id=id.toString()
+  let newUser= await users.set(id, {
     usu_name:name,
     usu_mpassword:mpass
     },{
@@ -101,7 +103,9 @@ const userExists=async function(name){
   logUser=logUser.results[0]
   return logUser!=void(0)
 }
+const regsFromUser= async function(usu_id){
 
+}
 let users = db.collection('user')
 //const users=require("./db/users.json")
 
