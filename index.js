@@ -96,7 +96,7 @@ app.get("/login", async (req, res, next) => {
   var usu = de(req.query.user);
   var pass = de(req.query.pass);
   var login= await loginUser(usu,pass)
-  console.log("login "+login)
+  console.log("login "+JSON.parse(login))
   res.json({
     data:req.query.user,
     msg:"lel"
