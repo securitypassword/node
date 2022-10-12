@@ -167,7 +167,7 @@ const registersEmptyId=async function(){
 }
 
 const registerPassword=async function(usuId,pass,name){
-  console.log("registering "+name)
+  console.log("registering pass "+name)
   var id=await usersEmptyId()
   id=id.toString()
   console.log(id)
@@ -193,7 +193,7 @@ app.get("/savePass", async (req, res, next) => {
   var choosenName=de(req.query.name)
   await registerPassword(usu_id,newPass,choosenName)
   res.json({
-    data:en(usu_id+" "+newPass),
+    data:en(usu_id+" "+choosenName),
     msg:en("added")
   })
 });
