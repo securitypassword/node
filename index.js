@@ -89,6 +89,12 @@ const loginUser=async function(name,mpass){
   console.log(logUser)
   return logUser
 }
+const userExists=async function(name){
+  let logUser= await users.index("usu_name").find(name)
+  logUser=logUser.results[0]
+  console.log(logUser)
+  return logUser!=null
+}
 
 let users = db.collection('user')
 //const users=require("./db/users.json")
