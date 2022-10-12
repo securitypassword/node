@@ -76,7 +76,7 @@ const usersEmptyId=async function(){
 const registerUser=async function(name,mpass){
   console.log("registering "+name)
   var exists=await userExists(name)
-  if(!exists){
+  //if(!exists){
     var id=await usersEmptyId()
     id=id.toString()
     let newUser= await users.set(id, {
@@ -86,7 +86,7 @@ const registerUser=async function(name,mpass){
       $index: ['usu_name']
     })    
     console.log("register "+newUser.toString())
-  }
+  //}
 }
 
 const loginUser=async function(name,mpass){
