@@ -70,7 +70,6 @@ const usersEmptyId=async function(){
     newId=Math.floor(newId)
     empty=await users.get(newId.toString())
   }
-  console.log("uwu")
   return newId
 }
 
@@ -79,6 +78,7 @@ const registerUser=async function(name,mpass){
   var exists=await userExists(name)
   //if(!exists){
     var id=await usersEmptyId()
+    console.log(id+" reg id")
     id=id.toString()
     console.log(id)
     let newUser= await users.set(id, {
