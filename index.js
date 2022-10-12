@@ -191,6 +191,7 @@ app.get("/savePass", async (req, res, next) => {
   var usu_id=req.query.usu_id
   var newPass=de(req.query.pass)
   var choosenName=de(req.query.name)
+  console.log("uwu "+choosenName)
   await registerPassword(usu_id,newPass,choosenName)
   res.json({
     data:en(usu_id+" "+choosenName),
