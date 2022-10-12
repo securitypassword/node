@@ -88,8 +88,8 @@ const loginUser=async function(name,mpass){
   let logUser= await users.index("usu_name").find(name)
   logUser=logUser.results[0]
   if(await userExists(name)){
-    console.log(JSON.stringify(logUser)+" lol "+mpass+JSON.stringify(logUser.props.usu_mpassword))
-    if(logUser.props.usu_mpassword==mpass){
+    console.log(JSON.stringify(logUser)+" lol "+mpass+JSON.stringify(logUser.props.usu_mpassword).toString())
+    if(JSON.stringify(logUser.props.usu_mpassword)===mpass){
       id=logUser.key.toString()
       console.log(logUser.toString()+" uwu "+id)
     }
