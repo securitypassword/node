@@ -90,6 +90,7 @@ const loginUser=async function(name,mpass){
   if(await userExists(name)){
     if(logUser.props.usu_mpassword==mpass){
       id=logUser.key
+      console.log(JSON.parse(logUser)+" uwu "+id)
     }
   }
   console.log(logUser+" "+id)
