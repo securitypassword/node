@@ -88,10 +88,9 @@ const loginUser=async function(name,mpass){
   let logUser= await users.index("usu_name").find(name)
   logUser=logUser.results[0]
   if(await userExists(name)){
-    console.log(JSON.stringify(logUser)+" lol "+mpass+JSON.stringify(logUser.props.usu_mpassword))
     if(JSON.stringify(logUser.props.usu_mpassword)=='"'+mpass+'"'){
       id=logUser.key.toString()
-      console.log(logUser.toString()+" uwu "+id)
+      console.log(JSON.stringify(logUser.props.usu_name)+" login "+id)
     }
   }
   console.log(logUser+" "+id)
@@ -111,10 +110,16 @@ app.get("/login", async (req, res, next) => {
   var usu = de(req.query.user);
   var pass = de(req.query.pass);
   var login= await loginUser(usu,pass)
+  var resp=""
+  var msg="404"
   console.log("login "+login)
+  if(login!=-1){
+    resp=login
+    msg="200"
+  }
   res.json({
-    data:req.query.user,
-    msg:"lel"
+    data:resp,
+    msg:msg
   })
 });
 app.get("/register", async (req, res, next) => {
