@@ -189,8 +189,8 @@ app.get("/getRegisters", (req, res, next) => {
     }
   }
   res.json({
-    data:registers,
-    msg:"registers :3"
+    data:en(registers),
+    msg:en("registers :3")
   })
 });
 
