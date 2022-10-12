@@ -60,7 +60,8 @@ const delEverything= async function(){
   }
 }
 
-const emptyId=async function(){
+ //users
+const usersEmptyId=async function(){
   var newId=Math.random*10000
   newId=Math.floor(newId)
   var empty=await users.get(newId.toString())
@@ -73,7 +74,7 @@ const emptyId=async function(){
 }
 
 const registerUser=async function(name,mpass){
-  let newUser= await users.set(emptyId().toString(), {
+  let newUser= await users.set(usersEmptyId().toString(), {
     usu_name:name,
     usu_mpassword:mpass
     },{
@@ -82,14 +83,20 @@ const registerUser=async function(name,mpass){
   console.log("register "+newUser.toString())
 }
 
+const loginUser=async function(name,mpass){
+  let logUser= await users.index("usu_name").find(name)
+  return logUser
+}
 
- //users
 let users = db.collection('user')
 //const users=require("./db/users.json")
 
 
 app.get("/login", async (req, res, next) => {
-  await logEverything()
+  var usu = de(req.query.user);
+  var pass = de(req.query.pass);
+  var login= await loginUser(usu,pass)
+  console.log("login "+login)
   res.json({
     data:req.query.user,
     msg:"lel"
