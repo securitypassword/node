@@ -85,6 +85,7 @@ const registerUser=async function(name,mpass){
 
 const loginUser=async function(name,mpass){
   let logUser= await users.index("usu_name").find(name)
+  console.log(logUser)
   return logUser
 }
 
@@ -96,8 +97,7 @@ app.get("/login", async (req, res, next) => {
   var usu = de(req.query.user);
   var pass = de(req.query.pass);
   var login= await loginUser(usu,pass)
-  console.log("login "+login.toString())
-  console.log("login "+JSON.parse(login))
+  console.log("login "+login)
   res.json({
     data:req.query.user,
     msg:"lel"
