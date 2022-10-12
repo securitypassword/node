@@ -184,8 +184,8 @@ app.get("/getRegisters", (req, res, next) => {
   var usu_id = req.query.usu_id;
   var registers={
     "a":{
-      reg_name:"a",
-      reg_pass:"ewe"
+      reg_name:"U2FsdGVkX19LZ9JP9ICSSxfPD08XEvqC",
+      reg_pass:"U2FsdGVkX1_JiTYn8W1Xs3mU9Rsfvheo"
     }
   }
   res.json({
