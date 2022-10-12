@@ -63,11 +63,8 @@ const delEverything= async function(){
  //users
 const usersEmptyId=async function(){
   var newId=parseInt(Math.random()*10000)
-  console.log("newid"+newId)
   newId=Math.floor(newId)
   var empty=await users.get(newId.toString())
-  //empty=await users.get("3")
-  console.log(empty)
   while(empty!=null){
     newId=Math.random*10000
     newId=Math.floor(newId)
@@ -79,9 +76,8 @@ const usersEmptyId=async function(){
 const registerUser=async function(name,mpass){
   console.log("registering "+name)
   var exists=await userExists(name)
-  //if(!exists){
+  if(!exists){
     var id=await usersEmptyId()
-    console.log(id+" reg id")
     id=id.toString()
     console.log(id)
     let newUser= await users.set(id, {
@@ -91,7 +87,7 @@ const registerUser=async function(name,mpass){
       $index: ['usu_name']
     })    
     console.log("register "+newUser.toString())
-  //}
+  }
 }
 
 const loginUser=async function(name,mpass){
