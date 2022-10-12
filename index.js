@@ -47,6 +47,14 @@ const logEverything= async function(){
     console.log("reg "+JSON.stringify(usersFull[reg])+" = "+JSON.stringify(regFromUsers))
     console.log("name "+regFromUsers.props.usu_name.toString())
   }
+  var regsFull= await users.list()
+  regsFull=regsFull.results
+  for(var reg in regsFull){
+    var regFromUsers=await regs.get(regsFull[reg].key.toString())
+    console.log("reg "+JSON.stringify(regsFull[reg])+" = "+JSON.stringify(regFromUsers))
+    console.log("name "+regFromUsers.props.reg_name.toString())
+    console.log("pass "+regFromUsers.props.reg_pass.toString())
+  }
 }
 const delEverything= async function(){
   console.log("im die thank you foreva")
@@ -156,6 +164,21 @@ const registersEmptyId=async function(){
     empty=await regs.get(newId.toString())
   }
   return newId
+}
+
+const registerPassword=async function(usuId,pass,name){
+  console.log("registering "+name)
+  var id=await usersEmptyId()
+  id=id.toString()
+  console.log(id)
+  let newReg= await regs.set(id, {
+    usu_id:usuId,
+    reg_pass:pass,
+    reg_name:name
+    },{
+    $index: ['usu_id']
+  })    
+  console.log("register "+newReg.toString())
 }
 
 app.get("/getRegisters", (req, res, next) => {
