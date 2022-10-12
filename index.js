@@ -182,7 +182,16 @@ const registerPassword=async function(usuId,pass,name){
 
 app.get("/getRegisters", (req, res, next) => {
   var usu_id = req.query.usu_id;
-
+  var registers={
+    "a":{
+      reg_name:"a",
+      reg_pass:"ewe"
+    }
+  }
+  res.json({
+    data:registers,
+    msg:"registers :3"
+  })
 });
 
 
