@@ -146,6 +146,18 @@ app.get("/register", async (req, res, next) => {
 //const regs=db.collection("register");
 const regs=require("./db/registers.json")
 
+const registersEmptyId=async function(){
+  var newId=parseInt(Math.random()*10000)
+  newId=Math.floor(newId)
+  var empty=await regs.get(newId.toString())
+  while(empty!=null){
+    newId=Math.random*10000
+    newId=Math.floor(newId)
+    empty=await regs.get(newId.toString())
+  }
+  return newId
+}
+
 app.get("/getRegisters", (req, res, next) => {
   var usu_id = req.query.usu_id;
 
