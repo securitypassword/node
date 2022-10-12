@@ -65,6 +65,7 @@ const usersEmptyId=async function(){
   var newId=Math.random*10000
   newId=Math.floor(newId)
   var empty=await users.get(newId.toString())
+  console.log(JSON.stringify(empty))
   while(JSON.stringify(empty)!=null){
     newId=Math.random*10000
     newId=Math.floor(newId)
