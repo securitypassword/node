@@ -64,14 +64,18 @@ const emptyId=async function(){
   var newId=Math.random*10000
   newId=Math.floor(newId)
   var empty=await users.get(newId.toString())
-  console.log("empty "+JSON.stringify(empty))
+  while(JSON.stringify(empty)!=null){
+    newId=Math.random*10000
+    newId=Math.floor(newId)
+    empty=await users.get(newId.toString())
+  }
   return newId
 }
 
-const registerUser=async function(){
-  let newUser=users.set('3', {
-    usu_name:'demma',
-    usu_mpassword:'me girl'
+const registerUser=async function(name,mpass){
+  let newUser=users.set(emptyId(), {
+    usu_name:name,
+    usu_mpassword:mpass
     },{
     $index: ['usu_name']
   })    
@@ -93,8 +97,10 @@ app.get("/login", async (req, res, next) => {
 });
 app.get("/register", (req, res, next) => {
   var usu = de(req.query.user);
+  var pass = de(req.query.pass);
+  registerUser(usu,pass)
   res.json({
-    data:en(emptyId().toString),
+    data:en("registered"),
     msg:""
   })
 });
