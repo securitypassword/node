@@ -63,7 +63,7 @@ const delEverything= async function(){
 const emptyId=async function(){
   var newId=Math.random*10000
   newId=Math.floor(newId)
-  var empty=await users.get(newId)
+  var empty=await users.get(newId.toString())
   console.log("empty "+JSON.stringify(empty))
   return newId
 }
