@@ -154,6 +154,12 @@ app.get("/getRegisters", (req, res, next) => {
 
 app.get("/savePass", async (req, res, next) => {
   var usu_id=req.query.usu_id
+  var newPass=de(req.query.pass)
+  var choosenName=de(req.query.name)
+  res.json({
+    data:en(usu_id+" "+newPass),
+    msg:en("added")
+  })
 });
 //end of database
 
@@ -189,7 +195,7 @@ app.get("/generate", (req, res, next) => {
 
   for (var i = 0; i < len; i++) {
     pass += allowed.charAt(Math.floor(Math.random() * allowed.length));
-  } //nice
+  }
   var passEn = en(pass);
   res.json({
     data: passEn,
