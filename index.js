@@ -79,6 +79,7 @@ const registerUser=async function(name,mpass){
   //if(!exists){
     var id=await usersEmptyId()
     id=id.toString()
+    console.log(id)
     let newUser= await users.set(id, {
       usu_name:name,
       usu_mpassword:mpass
