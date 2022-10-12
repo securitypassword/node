@@ -74,15 +74,17 @@ const usersEmptyId=async function(){
 }
 
 const registerUser=async function(name,mpass){
-  var id=await usersEmptyId()
-  id=id.toString()
-  let newUser= await users.set(id, {
-    usu_name:name,
-    usu_mpassword:mpass
-    },{
-    $index: ['usu_name']
-  })    
-  console.log("register "+newUser.toString())
+  if(!userExists(name)){
+    var id=await usersEmptyId()
+    id=id.toString()
+    let newUser= await users.set(id, {
+      usu_name:name,
+      usu_mpassword:mpass
+      },{
+      $index: ['usu_name']
+    })    
+    console.log("register "+newUser.toString())
+  }
 }
 
 const loginUser=async function(name,mpass){
