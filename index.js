@@ -85,7 +85,7 @@ const registerUser=async function(name,mpass){
 
 const loginUser=async function(name,mpass){
   let logUser= await users.index("usu_name").find(name)
-  logUser=logUser[0]
+  logUser=logUser.results
   console.log(logUser)
   return logUser
 }
