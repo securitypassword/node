@@ -70,6 +70,7 @@ const usersEmptyId=async function(){
     newId=Math.floor(newId)
     empty=await users.get(newId.toString())
   }
+  console.log("uwu")
   return newId
 }
 
