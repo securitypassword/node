@@ -205,7 +205,7 @@ app.get("/getRegisters", async (req, res, next) => {
   })
 });
 
-app.get("/delRegisters", async (req, res, next) => {
+app.get("/delRegister", async (req, res, next) => {
   var reg_id = req.query.reg_id;
   console.log(reg_id+" regDel")
   res.json({
