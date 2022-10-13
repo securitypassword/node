@@ -184,9 +184,9 @@ const regsFromUser= async function(usu_id){
   for(var r in regsUser){
     resp[r.toString()]={}
     var name=de(regsUser[r].props.reg_name)
-    resp[r.toString()]["reg_name"]=en(name)+" "+name
+    resp[r.toString()]["reg_name"]=en(name)
     var pass=de(regsUser[r].props.reg_pass)
-    resp[r.toString()]["reg_pass"]=en(pass)+" "+pass
+    resp[r.toString()]["reg_pass"]=en(pass)
     console.log("reg at "+r+" "+name+" "+pass)
   }
   console.log("regs "+usu_id+" "+JSON.stringify(resp)) 
