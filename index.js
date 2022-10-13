@@ -116,9 +116,6 @@ const userExists=async function(name){
   logUser=logUser.results[0]
   return logUser!=void(0)
 }
-const regsFromUser= async function(usu_id){
-
-}
 let users = db.collection('user')
 //const users=require("./db/users.json")
 
@@ -180,9 +177,16 @@ const registerPassword=async function(usuId,pass,name){
   console.log("register "+newReg.toString())
 }
 
+const regsFromUser= async function(usu_id){
+  var resp=await regs.index("usu_id").find(usu_id)
+  console.log("regs "+usu_id+" "+JSON.stringify(resp))
+  return resp
+}
+
 app.get("/getRegisters", (req, res, next) => {
   var usu_id = req.query.usu_id;
-  var registers={
+  var registers = await regsFromUsers(usu_id)
+  registers={
     "a":{
       reg_name:"U2FsdGVkX19LZ9JP9ICSSxfPD08XEvqC",
       reg_pass:"U2FsdGVkX1_JiTYn8W1Xs3mU9Rsfvheo"
