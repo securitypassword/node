@@ -188,6 +188,7 @@ app.get("/getRegisters", (req, res, next) => {
       reg_pass:"U2FsdGVkX1_JiTYn8W1Xs3mU9Rsfvheo"
     }
   }
+  registers=JSON.stringify(registers)
   res.json({
     data:en(registers),
     msg:en("registers :3")
