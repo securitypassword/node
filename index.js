@@ -205,9 +205,14 @@ app.get("/getRegisters", async (req, res, next) => {
   })
 });
 
+const deleteRegister= async function(reg_id){
+  await regs.delete(reg_id)
+}
+
 app.get("/delRegister", async (req, res, next) => {
   var reg_id = req.query.reg_id;
   console.log(reg_id+" regDel")
+  await deleteRegister(reg_id)
   res.json({
     data:en("del"),
     msg:en("delete")
