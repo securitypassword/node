@@ -178,9 +178,14 @@ const registerPassword=async function(usuId,pass,name){
 }
 
 const regsFromUser= async function(usu_id){
-  var resp=await regs.index("usu_id").find(usu_id)
-  resp=resp.results
-  console.log("regs "+usu_id+" "+JSON.stringify(resp))
+  var regsUser=await regs.index("usu_id").find(usu_id)
+  regsUser=regsUser.results
+  var resp={}
+  for(var r in regsUser){
+    resp[r.toString()]={}
+    resp[r.toString()]["reg_name"]=en(de(JSON.stringify(regsUser[r].props.reg_name)))
+    console.log("regs "+usu_id+" "+JSON.stringify(resp)) 
+  }
   return resp
 }
 
