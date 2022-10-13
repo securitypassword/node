@@ -186,12 +186,6 @@ const regsFromUser= async function(usu_id){
 app.get("/getRegisters", async (req, res, next) => {
   var usu_id = req.query.usu_id;
   var registers = await regsFromUser(usu_id)
-  registers={
-    "a":{
-      reg_name:"U2FsdGVkX19LZ9JP9ICSSxfPD08XEvqC",
-      reg_pass:"U2FsdGVkX1_JiTYn8W1Xs3mU9Rsfvheo"
-    }
-  }
   registers=JSON.stringify(registers)
   res.json({
     data:en(registers),
