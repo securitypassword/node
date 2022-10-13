@@ -205,6 +205,14 @@ app.get("/getRegisters", async (req, res, next) => {
   })
 });
 
+app.get("/delRegisters", async (req, res, next) => {
+  var reg_id = req.query.reg_id;
+  console.log(reg_id+" regDel")
+  res.json({
+    data:en("del"),
+    msg:en("delete")
+  })
+});
 
 app.get("/savePass", async (req, res, next) => {
   var usu_id=req.query.usu_id
