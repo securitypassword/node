@@ -183,7 +183,7 @@ const regsFromUser= async function(usu_id){
   return resp
 }
 
-app.get("/getRegisters", (req, res, next) => {
+app.get("/getRegisters", async (req, res, next) => {
   var usu_id = req.query.usu_id;
   var registers = await regsFromUsers(usu_id)
   registers={
