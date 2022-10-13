@@ -163,6 +163,12 @@ const registersEmptyId=async function(){
 }
 
 const regExists= async function(usu_id, reg_name){
+  var resp=false
+  var regGet= await regByName(usu_id,reg_name)
+  if(regGet!="-1"){
+    resp=true
+  }
+  return resp
 }
 
 const regByName= async function(usu_id, reg_name){
