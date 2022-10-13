@@ -169,8 +169,8 @@ const registerPassword=async function(usuId,pass,name){
   console.log(id)
   let newReg= await regs.set(id, {
     usu_id:usuId,
-    reg_pass:pass,
-    reg_name:name
+    reg_pass:en(pass),
+    reg_name:en(name)
     },{
     $index: ['usu_id']
   })    
