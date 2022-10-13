@@ -187,7 +187,7 @@ const regsFromUser= async function(usu_id){
     resp[r.toString()]["reg_name"]=en(name)
     var pass=de(regsUser[r].props.reg_pass)
     resp[r.toString()]["reg_pass"]=en(pass)
-    var reg_id=de(regsUser[r].key)
+    var reg_id=regsUser[r].key
     resp[r.toString()]["reg_id"]=en(reg_id)
     console.log("reg at "+r+" "+name+" "+pass)
   }
