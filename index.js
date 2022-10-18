@@ -159,7 +159,7 @@ const changeAutoDel=async function(usu_id){
   console.log("user "+user)
   var auto=false
   auto=auto.toString()
-  return false
+  return auto
 }
 
 app.get("/changeAutoDel", async (req, res, next) => {
