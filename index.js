@@ -156,7 +156,7 @@ app.get("/register", async (req, res, next) => {
 
 const changeAutoDel=async function(usu_id){
   var user=await users.get(usu_id)
-  console.log("user "+user)
+  console.log("user "+JSON.stringify(user))
   var auto=false
   auto=auto.toString()
   return auto
