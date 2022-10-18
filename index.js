@@ -253,7 +253,6 @@ const regsFromUser= async function(usu_id){
   regsUser=regsUser.results
   var resp={}
   for(var r in regsUser){
-    console.log(JSON.stringify(regsUser[r]))
     if(regsUser[r].props.reg_in_bin=="false"){
       resp[r.toString()]={}
       var name=de(regsUser[r].props.reg_name)
