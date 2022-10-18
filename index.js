@@ -112,7 +112,7 @@ const loginUser=async function(name,mpass){
         autodel:autoDel.toString()}
       await resetAutoDel(JSON.stringify(logUser.key))
       console.log(JSON.stringify(logUser.props.usu_name)+" login "+id)
-    }else if(logUser.props.usu_autodel=="true"){
+    }else{
       await addAutoDel((JSON.stringify(logUser.key)))
     }
   }
@@ -154,12 +154,14 @@ app.get("/register", async (req, res, next) => {
 
 const addAutoDel=async function(usu_id){
   var user=await users.get(usu_id)
-  var count=users.props.usu_autodel_count
-  count+=1
-  await users.set(usu_id,{usu_autodel_count:count})
-  console.log("add count autodelete "+usu_id+" to "+count)
-  if(count>5){
-    await deletePassFromUser(usu_id)
+  if(user.pro>ps.usu_autodel=="true"){
+    var count=users.props.usu_autodel_count
+    count+=1
+    await users.set(usu_id,{usu_autodel_count:count})
+    console.log("add count autodelete "+usu_id+" to "+count)
+    if(count>5){
+      await deletePassFromUser(usu_id)
+    }
   }
 }
 
