@@ -161,6 +161,7 @@ const changeAutoDel=async function(usu_id){
   var change=auto=="true"
   change=!change
   auto=change.toString()
+  await users.set(usu_id,{usu_autodel:auto})
   return auto
 }
 
