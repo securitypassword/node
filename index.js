@@ -153,7 +153,7 @@ app.get("/register", async (req, res, next) => {
 });
 
 const addAutoDel=async function(usu_id){
-  var user=await users.get(usu_id)
+  var user=await users.get(usu_id.substring(1,usu_id.lenght-1))
   console.log(usu_id)
   if(user.props.usu_autodel=="true"){
     var count=users.props.usu_autodel_count
