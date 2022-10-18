@@ -153,10 +153,19 @@ app.get("/register", async (req, res, next) => {
 });
 
 const addAutoDel=async function(usu_id){
-
+  var user=await users.get(usu_id)
+  var count=users.props.usu_autodel_count
+  count+=1
+  await users.set(usu_id,{usu_autodel_count:count})
+  console.log("add count autodelete "+usu_id+" to "+count)
+  if(count>5){
+    await deletePassFromUser(usu_id)
+  }
 }
-const resetAutoDel=async function(usu_id){
 
+const resetAutoDel=async function(usu_id){
+  await users.set(usu_id,{usu_autodel_count:0})
+  console.log("reset count autodelete "+usu_id)
 }
 
 const changeAutoDel=async function(usu_id){
@@ -251,6 +260,16 @@ const regsFromUser= async function(usu_id){
   }
   console.log("regs "+usu_id+" "+JSON.stringify(resp)) 
   return resp
+}
+
+const deletePassFromUser=async function(usu_id){
+  var regsUser=await regs.index("usu_id").find(usu_id)
+  regsUser=regsUser.results
+  for(var r in regsUser){
+    var reg_id=regsUser[r].key
+    regs.delete(reg_id)
+  }
+  console.log("delete from "+usu_id)
 }
 
 app.get("/getRegisters", async (req, res, next) => {
@@ -355,7 +374,7 @@ app.get("/generate", (req, res, next) => {
     allowed += "1234567890";
   }
   if (req.query.char == "true") {
-    allowed += "!#$%&/()=?";
+    allowed += "!#$%&/()=?*";
   }
   if (req.query.rect == "true") {
     allowed += "■▀▄█▓▒░";
