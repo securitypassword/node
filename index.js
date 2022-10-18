@@ -158,6 +158,9 @@ const changeAutoDel=async function(usu_id){
   var user=await users.get(usu_id)
   console.log("user "+JSON.stringify(user))
   var auto=user.props.usu_autodel
+  var change=auto=="true"
+  change=!change
+  auto=change.toString()
   return auto
 }
 
