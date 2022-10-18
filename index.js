@@ -90,7 +90,9 @@ const registerUser=async function(name,mpass){
     console.log(id)
     let newUser= await users.set(id, {
       usu_name:name,
-      usu_mpassword:mpass
+      usu_mpassword:mpass,
+      usu_autodel:"false",
+      usu_autodel_count:0
       },{
       $index: ['usu_name']
     })    
@@ -119,6 +121,9 @@ const userExists=async function(name){
 let users = db.collection('user')
 //const users=require("./db/users.json")
 
+const setAutoDel=async function(usu_id){
+  
+}
 
 app.get("/login", async (req, res, next) => {
   var usu = de(req.query.user);
@@ -173,10 +178,10 @@ const regExists= async function(usu_id, reg_name){
 
 const regByName= async function(usu_id, reg_name){
   var resp="-1"
-  var getReg= await reg.index("usu_id").find(usu_id)
+  var getReg= await regs.index("usu_id").find(usu_id)
   getReg=getReg.results
   for(var r in getReg){
-    if(getReg[r].props.reg_name=='"'+reg_name+'"'){
+    if(de(getReg[r].props.reg_name)==reg_name){
       resp=getReg[r].key
     }
   }
@@ -185,8 +190,13 @@ const regByName= async function(usu_id, reg_name){
 
 const registerPassword=async function(usuId,pass,name){
   console.log("registering pass "+name)
-  var id=await usersEmptyId()
+  var id=await registersEmptyId()
   id=id.toString()
+  exists= await regExists(usuId, name)
+  console.log(exists)
+  if(exists){
+    id=await regByName(usuId, name)
+  }
   console.log(id)
   let newReg= await regs.set(id, {
     usu_id:usuId,
