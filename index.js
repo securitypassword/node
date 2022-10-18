@@ -126,10 +126,6 @@ const userExists=async function(name){
 }
 let users = db.collection('user')
 
-const setAutoDel=async function(usu_id){
-
-}
-
 app.get("/login", async (req, res, next) => {
   var usu = de(req.query.user);
   var pass = de(req.query.pass);
