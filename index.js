@@ -240,7 +240,8 @@ const registerPassword=async function(usuId,pass,name){
   let newReg= await regs.set(id, {
     usu_id:usuId,
     reg_pass:en(pass),
-    reg_name:en(name)
+    reg_name:en(name),
+    reg_in_bin:"false"
     },{
     $index: ['usu_id']
   })    
@@ -252,14 +253,36 @@ const regsFromUser= async function(usu_id){
   regsUser=regsUser.results
   var resp={}
   for(var r in regsUser){
-    resp[r.toString()]={}
-    var name=de(regsUser[r].props.reg_name)
-    resp[r.toString()]["reg_name"]=en(name)
-    var pass=de(regsUser[r].props.reg_pass)
-    resp[r.toString()]["reg_pass"]=en(pass)
-    var reg_id=regsUser[r].key
-    resp[r.toString()]["reg_id"]=en(reg_id)
-    console.log("reg at "+r+" "+name+" "+pass)
+    if(regsUser[r].props.reg_in_bin=="false"){
+      resp[r.toString()]={}
+      var name=de(regsUser[r].props.reg_name)
+      resp[r.toString()]["reg_name"]=en(name)
+      var pass=de(regsUser[r].props.reg_pass)
+      resp[r.toString()]["reg_pass"]=en(pass)
+      var reg_id=regsUser[r].key
+      resp[r.toString()]["reg_id"]=en(reg_id)
+      console.log("reg at "+r+" "+name+" "+pass)
+    }
+  }
+  console.log("regs "+usu_id+" "+JSON.stringify(resp)) 
+  return resp
+}
+
+const binFromUser= async function(usu_id){
+  var regsUser=await regs.index("usu_id").find(usu_id)
+  regsUser=regsUser.results
+  var resp={}
+  for(var r in regsUser){
+    if(regsUser[r].props.reg_in_bin=="true"){
+      resp[r.toString()]={}
+      var name=de(regsUser[r].props.reg_name)
+      resp[r.toString()]["reg_name"]=en(name)
+      var pass=de(regsUser[r].props.reg_pass)
+      resp[r.toString()]["reg_pass"]=en(pass)
+      var reg_id=regsUser[r].key
+      resp[r.toString()]["reg_id"]=en(reg_id)
+      console.log("reg at "+r+" "+name+" "+pass)
+    }
   }
   console.log("regs "+usu_id+" "+JSON.stringify(resp)) 
   return resp
@@ -285,8 +308,23 @@ app.get("/getRegisters", async (req, res, next) => {
   })
 });
 
+app.get("/getPaperBin", async (req, res, next) => {
+  var usu_id = req.query.usu_id;
+  var registers = await binFromUser(usu_id)
+  registers=JSON.stringify(registers)
+  res.json({
+    data:en(registers),
+    msg:en("registers :3")
+  })
+});
+
 const deleteRegister= async function(reg_id){
-  await regs.delete(reg_id)
+  var reg=regs.get(reg_id)
+  if(reg.props.reg_in_bin=="false"){
+    regs.set(reg_id,{reg_in_bin:"true"})
+  }else if(reg.props.reg_in_bin=="true"){
+    await regs.delete(reg_id)
+  }
 }
 
 app.get("/delRegister", async (req, res, next) => {
@@ -296,6 +334,23 @@ app.get("/delRegister", async (req, res, next) => {
   res.json({
     data:en("del"),
     msg:en("delete")
+  })
+});
+
+const restoreRegister= async function(reg_id){
+  var reg=regs.get(reg_id)
+  if(reg.props.reg_in_bin=="true"){
+    regs.set(reg_id,{reg_in_bin:"false"})
+  }
+}
+
+app.get("/restoreRegister", async (req, res, next) => {
+  var reg_id = req.query.reg_id;
+  console.log(reg_id+" regDel")
+  await restoreRegister(reg_id)
+  res.json({
+    data:en("and again..."),
+    msg:en("restore")
   })
 });
 
