@@ -109,7 +109,7 @@ const loginUser=async function(name,mpass){
     if(JSON.stringify(logUser.props.usu_mpassword)=='"'+mpass+'"'){
       var autoDel=JSON.stringify(logUser.props.usu_autodel)
       id={id:JSON.stringify(logUser.key),
-        autodel:autoDel}
+        autodel:autoDel.toString()}
       console.log(JSON.stringify(logUser.props.usu_name)+" login "+id)
     }
   }
