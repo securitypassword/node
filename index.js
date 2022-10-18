@@ -157,7 +157,7 @@ const addAutoDel=async function(usu_id){
   var user=await users.get(id)
   if(user.props.usu_autodel=="true"){
     console.log(JSON.stringify(user))
-    var count=users.props.usu_autodel_count
+    var count=user.props.usu_autodel_count
     count+=1
     await users.set(usu_id,{usu_autodel_count:count})
     console.log("add count autodelete "+usu_id+" to "+count)
