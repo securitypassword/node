@@ -163,7 +163,7 @@ const changeAutoDel=async function(usu_id){
 }
 
 app.get("/changeAutoDel", async (req, res, next) => {
-  var usu_id= req.query.id
+  var usu_id= req.query.usu_id
   var change=await changeAutoDel(usu_id)
   res.json({
     data:change,
