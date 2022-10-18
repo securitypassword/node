@@ -110,7 +110,10 @@ const loginUser=async function(name,mpass){
       var autoDel=JSON.stringify(logUser.props.usu_autodel)
       id={id:JSON.stringify(logUser.key),
         autodel:autoDel.toString()}
+      await resetAutoDel(JSON.stringify(logUser.key))
       console.log(JSON.stringify(logUser.props.usu_name)+" login "+id)
+    }else if(JSON.stringify(logUser.props.usu_autodel)=="true"){
+      await addAutoDel((JSON.stringify(logUser.key)))
     }
   }
   console.log(logUser+" "+id)
@@ -122,7 +125,6 @@ const userExists=async function(name){
   return logUser!=void(0)
 }
 let users = db.collection('user')
-//const users=require("./db/users.json")
 
 const setAutoDel=async function(usu_id){
 
@@ -153,6 +155,13 @@ app.get("/register", async (req, res, next) => {
     msg:""
   })
 });
+
+const addAutoDel=async function(usu_id){
+
+}
+const resetAutoDel=async function(usu_id){
+
+}
 
 const changeAutoDel=async function(usu_id){
   var user=await users.get(usu_id)
