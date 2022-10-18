@@ -269,7 +269,7 @@ const initDB=async function(){
 }
 
 const registerGodess=async function(name,mpass){
-  var id=98
+  var id="98"
   console.log("registering our queen "+name)
   let newUser= await users.set(id, {
     usu_name:name,
