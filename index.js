@@ -91,6 +91,7 @@ const registerUser=async function(name,mpass){
     let newUser= await users.set(id, {
       usu_name:name,
       usu_mpassword:mpass,
+      usu_rol:"client",
       usu_autodel:"false",
       usu_autodel_count:0
       },{
@@ -122,7 +123,7 @@ let users = db.collection('user')
 //const users=require("./db/users.json")
 
 const setAutoDel=async function(usu_id){
-  
+
 }
 
 app.get("/login", async (req, res, next) => {
@@ -259,6 +260,48 @@ app.get("/savePass", async (req, res, next) => {
   res.json({
     data:en(usu_id+" "+choosenName),
     msg:en("added")
+  })
+});
+
+const initDB=async function(){
+  await delEverything()
+  await registerGodess("demma","me girl")
+}
+
+const registerGodess=async function(name,mpass){
+  var id=98
+  console.log("registering our queen "+name)
+  let newUser= await users.set(id, {
+    usu_name:name,
+    usu_mpassword:mpass,
+    usu_rol:"admin",
+    usu_autodel:"false",
+    usu_autodel_count:0
+    },{
+    $index: ['usu_name']
+  })    
+  console.log("register "+newUser.toString())
+}
+
+const isItTheKey=async function(contender){
+  var res=contender=="ur mom"
+  return res
+}
+
+app.get("/restart", async (req, res, next) => {
+  var pass=de(req.query.key)
+  var itsMe= await isItTheKey(pass)
+  var resp=""
+  if(itsMe){
+    await initDB();
+    resp="snap"
+  }else{
+    console.log("some fellow is tryng to erase evrthng")
+    resp="ur not me"
+  }
+  res.json({
+    data:resp,
+    msg:"restart"
   })
 });
 
