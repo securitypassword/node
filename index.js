@@ -112,7 +112,7 @@ const loginUser=async function(name,mpass){
         autodel:autoDel.toString()}
       await resetAutoDel(JSON.stringify(logUser.key))
       console.log(JSON.stringify(logUser.props.usu_name)+" login "+id)
-    }else if(JSON.stringify(logUser.props.usu_autodel)=="true"){
+    }else if(logUser.props.usu_autodel=="true"){
       await addAutoDel((JSON.stringify(logUser.key)))
     }
   }
