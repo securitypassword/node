@@ -249,6 +249,7 @@ const registerPassword=async function(usuId,pass,name){
 
 const regsFromUser= async function(usu_id){
   var regsUser=await regs.index("usu_id").find(usu_id)
+  regsUser=await regs.index("usu_id").find(usu_id)
   regsUser=regsUser.results
   var resp={}
   for(var r in regsUser){
