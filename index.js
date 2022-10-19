@@ -282,7 +282,6 @@ const binFromUser= async function(usu_id){
 
 const activeRegsFromUser= async function(usu_id){
   var regsUser=await regsFromUser(usu_id)
-  console.log("uwu "+JSON.stringify(regsUser))
   var resp={}
   for(var r in regsUser){
     var inBin=regsUser[r].reg_in_bin
@@ -290,6 +289,7 @@ const activeRegsFromUser= async function(usu_id){
       resp[r]=regsUser[r]
     }
   }
+  console.log("uwu "+JSON.stringify(resp))
   return resp
 }
 
