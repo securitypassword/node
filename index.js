@@ -285,7 +285,7 @@ const activeRegsFromUser= async function(usu_id){
   var resp={}
   for(var r in regsUser){
     var inBin=regsUser[r].reg_in_bin
-    if(inBin){
+    if(!inBin){
       resp[r]=regsUser[r]
     }
   }
