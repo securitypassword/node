@@ -253,13 +253,14 @@ const regsFromUser= async function(usu_id){
   var resp={}
   for(var r in regsUser){
     resp[r.toString()]={}
-    var name=de(regsUser[r].props.reg_name)
+    var reg=await regs.get(regsUser[r].key)
+    var name=de(reg.props.reg_name)
     resp[r.toString()]["reg_name"]=en(name)
-    var pass=de(regsUser[r].props.reg_pass)
+    var pass=de(reg.props.reg_pass)
     resp[r.toString()]["reg_pass"]=en(pass)
     var reg_id=regsUser[r].key
     resp[r.toString()]["reg_id"]=en(reg_id)
-    var reg_in_bin=regsUser[r].props.reg_in_bin
+    var reg_in_bin=reg.reg_in_bin
     resp[r.toString()]["reg_in_bin"]=reg_in_bin
     console.log("reg at "+r+" "+name+" "+pass)
   }
