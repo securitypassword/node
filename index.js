@@ -252,39 +252,42 @@ const regsFromUser= async function(usu_id){
   regsUser=regsUser.results
   var resp={}
   for(var r in regsUser){
-    if(!regsUser[r].props.reg_in_bin){
-      resp[r.toString()]={}
-      var name=de(regsUser[r].props.reg_name)
-      resp[r.toString()]["reg_name"]=en(name)
-      var pass=de(regsUser[r].props.reg_pass)
-      resp[r.toString()]["reg_pass"]=en(pass)
-      var reg_id=regsUser[r].key
-      resp[r.toString()]["reg_id"]=en(reg_id)
-      console.log("reg at "+r+" "+name+" "+pass)
-    }
+    resp[r.toString()]={}
+    var name=de(regsUser[r].props.reg_name)
+    resp[r.toString()]["reg_name"]=en(name)
+    var pass=de(regsUser[r].props.reg_pass)
+    resp[r.toString()]["reg_pass"]=en(pass)
+    var reg_id=regsUser[r].key
+    resp[r.toString()]["reg_id"]=en(reg_id)
+    console.log("reg at "+r+" "+name+" "+pass)
   }
   console.log("regs "+usu_id+" "+JSON.stringify(resp)) 
   return resp
 }
 
 const binFromUser= async function(usu_id){
-  var regsUser=await regs.index("usu_id").find(usu_id)
+  var regsUser=await regsFromUser(usu_id)
   regsUser=regsUser.results
   var resp={}
   for(var r in regsUser){
-    console.log("lol "+JSON.stringify(regsUser[r]))
-    if(regsUser[r].props.reg_in_bin){
-      resp[r.toString()]={}
-      var name=de(regsUser[r].props.reg_name)
-      resp[r.toString()]["reg_name"]=en(name)
-      var pass=de(regsUser[r].props.reg_pass)
-      resp[r.toString()]["reg_pass"]=en(pass)
-      var reg_id=regsUser[r].key
-      resp[r.toString()]["reg_id"]=en(reg_id)
-      console.log("reg at "+r+" "+name+" "+pass)
+    var inBin=regsUser[r].props.reg_in_bin
+    if(inBin){
+      resp[r]=regsUser[r]
     }
   }
-  console.log("regs "+usu_id+" "+JSON.stringify(resp)) 
+  return resp
+}
+
+const activeRegsFromUser= async function(usu_id){
+  var regsUser=await regsFromUser(usu_id)
+  regsUser=regsUser.results
+  var resp={}
+  for(var r in regsUser){
+    var inBin=regsUser[r].props.reg_in_bin
+    if(inBin){
+      resp[r]=regsUser[r]
+    }
+  }
   return resp
 }
 
@@ -300,7 +303,7 @@ const deletePassFromUser=async function(usu_id){
 
 app.get("/getRegisters", async (req, res, next) => {
   var usu_id = req.query.usu_id;
-  var registers = await regsFromUser(usu_id)
+  var registers = await activeRegsFromUser(usu_id)
   registers=JSON.stringify(registers)
   res.json({
     data:en(registers),
