@@ -322,10 +322,10 @@ const deleteRegister= async function(reg_id){
   var reg=await regs.get(reg_id)
   console.log("uwu "+reg.props.reg_in_bin)
   if(reg.props.reg_in_bin){
-    regs.set(reg_id,{reg_in_bin:true})
-  }else{
     await regs.delete(reg_id)
     console.log("delete reg "+reg_id)
+  }else{
+    regs.set(reg_id,{reg_in_bin:true})
   }reg=await regs.get(reg_id)
   console.log(JSON.stringify(reg))
 }
