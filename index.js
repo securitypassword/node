@@ -249,7 +249,6 @@ const registerPassword=async function(usuId,pass,name){
 
 const regsFromUser= async function(usu_id){
   var regsUser=await regs.index("usu_id").find(usu_id)
-  regsUser=await regs.index("usu_id").find(usu_id)
   regsUser=regsUser.results
   var resp={}
   for(var r in regsUser){
@@ -333,6 +332,7 @@ const deleteRegister= async function(reg_id){
     console.log("delete reg "+reg_id)
   }else{
     await regs.set(reg_id,{reg_in_bin:true})
+    await regs.index("usu_id").find(de(reg.props.usu_id))
   }
   reg=await regs.get(reg_id)
   console.log("after "+JSON.stringify(reg))
