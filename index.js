@@ -260,7 +260,7 @@ const regsFromUser= async function(usu_id){
     resp[r.toString()]["reg_pass"]=en(pass)
     var reg_id=regsUser[r].key
     resp[r.toString()]["reg_id"]=en(reg_id)
-    var reg_in_bin=reg.reg_in_bin
+    var reg_in_bin=reg.props.reg_in_bin
     resp[r.toString()]["reg_in_bin"]=reg_in_bin
     console.log("reg at "+r+" "+name+" "+pass)
   }
