@@ -320,6 +320,7 @@ app.get("/getPaperBin", async (req, res, next) => {
 
 const deleteRegister= async function(reg_id){
   var reg=regs.get(reg_id)
+  console.log(reg_id)
   console.log(JSON.stringify(reg))
   if(reg.props.reg_in_bin=="false"){
     regs.set(reg_id,{reg_in_bin:"true"})
