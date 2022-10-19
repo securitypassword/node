@@ -272,6 +272,7 @@ const binFromUser= async function(usu_id){
   regsUser=regsUser.results
   var resp={}
   for(var r in regsUser){
+    console.log("lol "+regsUser[r].props.reg_in_bin)
     if(regsUser[r].props.reg_in_bin=="true"){
       resp[r.toString()]={}
       var name=de(regsUser[r].props.reg_name)
