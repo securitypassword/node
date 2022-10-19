@@ -252,7 +252,8 @@ const regsFromUser= async function(usu_id){
   regsUser=regsUser.results
   var resp={}
   for(var r in regsUser){
-    if(regsUser[r].props.reg_in_bin=="false"){
+    console.log(JSON.stringify(regsUser[r]))
+    if(regsUser[r].props.reg_in_bin==false){
       resp[r.toString()]={}
       var name=de(regsUser[r].props.reg_name)
       resp[r.toString()]["reg_name"]=en(name)
@@ -273,7 +274,7 @@ const binFromUser= async function(usu_id){
   var resp={}
   for(var r in regsUser){
     console.log("lol "+JSON.stringify(regsUser[r]))
-    if(regsUser[r].props.reg_in_bin=="true"){
+    if(regsUser[r].props.reg_in_bin==true){
       resp[r.toString()]={}
       var name=de(regsUser[r].props.reg_name)
       resp[r.toString()]["reg_name"]=en(name)
