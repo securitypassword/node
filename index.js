@@ -70,8 +70,7 @@ const delEverything= async function(){
 
  //users
 const usersEmptyId=async function(){
-  var newId=parseInt(Math.random()*10000)
-  newId=Math.floor(newId)
+  var newId=Math.floor(parseInt(Math.random()*10000))
   var empty=await users.get(newId.toString())
   while(empty!=null){
     newId=Math.random*10000
@@ -220,7 +219,7 @@ const regByName= async function(usu_id, reg_name){
   var getReg= await regs.index("usu_id").find(usu_id)
   getReg=getReg.results
   for(var r in getReg){
-    if(de(getReg[r].props.reg_name)==reg_name){
+    if(de(getReg[r].props.reg_name)==reg_name&&getReg[r].props.reg_in_bin=="false"){
       resp=getReg[r].key
     }
   }
@@ -253,7 +252,6 @@ const regsFromUser= async function(usu_id){
   regsUser=regsUser.results
   var resp={}
   for(var r in regsUser){
-    console.log("uwu "+JSON.stringify(regsUser[r]))
     if(regsUser[r].props.reg_in_bin=="false"){
       resp[r.toString()]={}
       var name=de(regsUser[r].props.reg_name)
