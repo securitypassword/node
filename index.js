@@ -360,7 +360,7 @@ const restoreRegister= async function(reg_id){
 
 app.get("/restoreRegister", async (req, res, next) => {
   var reg_id = req.query.reg_id;
-  console.log(reg_id+" regDel")
+  console.log(reg_id+" reg restore")
   await restoreRegister(reg_id)
   res.json({
     data:en("and again..."),
