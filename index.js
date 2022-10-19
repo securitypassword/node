@@ -284,6 +284,7 @@ const activeRegsFromUser= async function(usu_id){
   var resp={}
   for(var r in regsUser){
     var inBin=regsUser[r].props.reg_in_bin
+    console.log(JSON.stringify(regsUser[r]))
     if(inBin){
       resp[r]=regsUser[r]
     }
