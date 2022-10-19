@@ -349,8 +349,8 @@ app.get("/delRegister", async (req, res, next) => {
 
 const restoreRegister= async function(reg_id){
   var reg=regs.get(reg_id)
-  if(reg.props.reg_in_bin=="true"){
-    regs.set(reg_id,{reg_in_bin:"false"})
+  if(reg.props.reg_in_bin){
+    regs.set(reg_id,{reg_in_bin:false})
   }
 }
 
