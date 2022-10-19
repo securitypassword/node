@@ -349,6 +349,7 @@ app.get("/delRegister", async (req, res, next) => {
 
 const restoreRegister= async function(reg_id){
   var reg=regs.get(reg_id)
+  console.log("restoring "+reg_id)
   if(reg.length!=0){
     console.log("uwu "+JSON.stringify(reg))
     var inBin=reg.props.reg_in_bin
