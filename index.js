@@ -270,7 +270,6 @@ const regsFromUser= async function(usu_id){
 
 const binFromUser= async function(usu_id){
   var regsUser=await regsFromUser(usu_id)
-  regsUser=regsUser.results
   var resp={}
   for(var r in regsUser){
     var inBin=regsUser[r].reg_in_bin
