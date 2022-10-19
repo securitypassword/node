@@ -240,7 +240,7 @@ const registerPassword=async function(usuId,pass,name){
     usu_id:usuId,
     reg_pass:en(pass),
     reg_name:en(name),
-    reg_in_bin:"false"
+    reg_in_bin:false
     },{
     $index: ['usu_id']
   })    
@@ -321,9 +321,9 @@ app.get("/getPaperBin", async (req, res, next) => {
 const deleteRegister= async function(reg_id){
   var reg=await regs.get(reg_id)
   console.log(JSON.stringify(reg))
-  if(reg.props.reg_in_bin=="false"){
-    regs.set(reg_id,{reg_in_bin:"true"})
-  }else if(reg.props.reg_in_bin=="true"){
+  if(reg.props.reg_in_bin==false){
+    regs.set(reg_id,{reg_in_bin:true})
+  }else if(reg.props.reg_in_bin==true){
     await regs.delete(reg_id)
     console.log("delete reg "+reg_id)
   }
