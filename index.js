@@ -319,7 +319,8 @@ app.get("/getPaperBin", async (req, res, next) => {
 });
 
 const deleteRegister= async function(reg_id){
-  var reg=await regs.get(reg_id)¿
+  var reg=await regs.get(reg_id)
+  console.log("uwu "+reg.props.reg_in_bin)
   if(!reg.props.reg_in_bin){
     regs.set(reg_id,{reg_in_bin:true})
   }else{
