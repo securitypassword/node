@@ -218,7 +218,7 @@ const passUsed= async function(usu_id, reg_pass){
   var resp=false
   var regsUser= await regsFromUser(usu_id)
   for(var r in regsUser){
-    if(regsUser[r].reg_pass==reg_pass){
+    if(de(regsUser[r].reg_pass)==reg_pass){
       resp=true
     }
   }
