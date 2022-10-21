@@ -220,6 +220,7 @@ const passUsed= async function(usu_id, reg_pass){
   for(var r in regsUser){
     if(regsUser[r].reg_pass==reg_pass){
       resp=true
+      console.log("uwu "+regsUser[r])
     }
   }
   return resp
