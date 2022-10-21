@@ -214,9 +214,9 @@ const regExists= async function(usu_id, reg_name){
   return resp
 }
 
-const passInUse= async function(usu_id, reg_pass){
+const passUsed= async function(usu_id, reg_pass){
   var resp=false
-  var userFull= await regsFromUser(usu_id)
+  var regsUser= await regsFromUser(usu_id)
   for(var r in regsUser){
     if(regsUser[r].reg_pass==reg_pass){
       resp=true
@@ -243,7 +243,7 @@ const registerPassword=async function(usuId,pass,name){
   var id=await registersEmptyId()
   id=id.toString()
   exists= await regExists(usuId, name)
-  var passInUse= await passInUse(usuId,pass)
+  var passInUse= await passUsed(usuId, pass)
   console.log(exists)
   if(exists){
     id=await regByName(usuId, name)
