@@ -230,7 +230,7 @@ const regByName= async function(usu_id, reg_name){
   var getReg= await regs.index("usu_id").find(usu_id)
   getReg=getReg.results
   for(var r in getReg){
-    if(de(getReg[r].props.reg_name)==reg_name&&getReg[r].props.reg_in_bin=="false"){
+    if(de(getReg[r].props.reg_name)==reg_name&&getReg[r].props.reg_in_bin==false){
       resp=getReg[r].key
     }
   }
