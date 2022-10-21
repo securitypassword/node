@@ -344,15 +344,17 @@ app.get("/getPaperBin", async (req, res, next) => {
 
 const deleteRegister= async function(reg_id){
   var reg=await regs.get(reg_id)
-  var inBin=reg.props.reg_in_bin
-  console.log("before "+JSON.stringify(reg))
-  if(inBin){
-    await regs.delete(reg_id)
-    console.log("delete reg "+reg_id)
-  }else{
-    await regs.set(reg_id,{reg_in_bin:true})
+  if(reg.props.reg_in_bin!=void(0)){
+    var inBin=reg.props.reg_in_bin
+    console.log("before "+JSON.stringify(reg))
+    if(inBin){
+      await regs.delete(reg_id)
+      console.log("delete reg "+reg_id)
+    }else{
+      await regs.set(reg_id,{reg_in_bin:true})
+    }
+    reg=await regs.get(reg_id)
   }
-  reg=await regs.get(reg_id)
   console.log("after "+JSON.stringify(reg))
 }
 
