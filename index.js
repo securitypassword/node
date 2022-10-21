@@ -214,6 +214,17 @@ const regExists= async function(usu_id, reg_name){
   return resp
 }
 
+const passInUse= async function(usu_id, reg_pass){
+  var resp=false
+  var userFull= await regsFromUser(usu_id)
+  for(var r in regsUser){
+    if(regsUser[r].reg_pass==reg_pass){
+      resp=true
+    }
+  }
+  return resp
+}
+
 const regByName= async function(usu_id, reg_name){
   var resp="-1"
   var getReg= await regs.index("usu_id").find(usu_id)
@@ -227,24 +238,32 @@ const regByName= async function(usu_id, reg_name){
 }
 
 const registerPassword=async function(usuId,pass,name){
+  var resp="registered"
   console.log("registering pass "+name)
   var id=await registersEmptyId()
   id=id.toString()
   exists= await regExists(usuId, name)
+  var passInUse= await passInUse(usuId,pass)
   console.log(exists)
   if(exists){
     id=await regByName(usuId, name)
+    resp="updated"
   }
   console.log(id)
-  let newReg= await regs.set(id, {
-    usu_id:usuId,
-    reg_pass:en(pass),
-    reg_name:en(name),
-    reg_in_bin:false
-    },{
-    $index: ['usu_id']
-  })    
-  console.log("register "+newReg.toString())
+  if(passInUse){
+    resp="already in use"
+  }else{
+    let newReg= await regs.set(id, {
+      usu_id:usuId,
+      reg_pass:en(pass),
+      reg_name:en(name),
+      reg_in_bin:false
+      },{
+      $index: ['usu_id']
+    })    
+    console.log("register "+newReg.toString())
+  }
+  return resp
 }
 
 const regsFromUser= async function(usu_id){
@@ -367,9 +386,9 @@ app.get("/savePass", async (req, res, next) => {
   var newPass=de(req.query.pass)
   var choosenName=de(req.query.name)
   console.log("reg pass "+" "+usu_id+" "+newPass+" "+choosenName)
-  await registerPassword(usu_id,newPass,choosenName)
+  var resp = await registerPassword(usu_id,newPass,choosenName)
   res.json({
-    data:en(usu_id+" "+choosenName),
+    data:en(usu_id+" "+choosenName+" "+resp),
     msg:en("added")
   })
 });
