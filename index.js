@@ -208,6 +208,7 @@ const registersEmptyId=async function(){
 const regExists= async function(usu_id, reg_name){
   var resp=false
   var regGet= await regByName(usu_id,reg_name)
+  console.log("uwu "+regGet)
   if(regGet!="-1"){
     resp=true
   }
@@ -220,7 +221,6 @@ const passUsed= async function(usu_id, reg_pass){
   for(var r in regsUser){
     if(regsUser[r].reg_pass==reg_pass){
       resp=true
-      console.log("uwu "+regsUser[r])
     }
   }
   return resp
