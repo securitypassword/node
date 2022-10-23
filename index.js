@@ -449,16 +449,17 @@ app.get("/restart", async (req, res, next) => {
 const jose =require('jose')
 let tokens = db.collection('tokens')
 
-var privateKey=await jose.importSPKI("hi gay im dad",'ES256')
+var privateKey="hi gay im dad"
 
 const sign= async function(toDo){
+  var signingKey=await jose.importSPKI(privateKey,'ES256')
   const jwt = await new jose.SignJWT(toDo)
   .setProtectedHeader({ alg: 'ES256' })
   .setIssuedAt()
   .setIssuer('urn:server')
   .setAudience('urn:client')
   .setExpirationTime('2h')
-  .sign(privateKey)
+  .sign(signingKey)
 
   console.log(jwt)
 
