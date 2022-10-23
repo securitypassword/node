@@ -112,7 +112,8 @@ const loginUser=async function(name,mpass){
       await resetAutoDel(JSON.stringify(logUser.key))
       if(JSON.stringify(logUser.props.usu_rol)=="admin"){
         var token=await sign({acess:JSON.stringify(logUser.key)})
-        logUser.token=token
+        id.token=token
+        console.log(JSON.stringify(logUser.key)+"'s token "+token)
       }
       console.log(JSON.stringify(logUser.props.usu_name)+" login "+id)
     }else{
