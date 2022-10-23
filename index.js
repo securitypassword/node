@@ -449,6 +449,8 @@ app.get("/restart", async (req, res, next) => {
 const jose =require('jose')
 let tokens = db.collection('tokens')
 
+var privateKey="hi gay im dad"
+
 const sign= async function(toDo){
   const jwt = await new jose.SignJWT(toDo)
   .setProtectedHeader({ alg: 'ES256' })
