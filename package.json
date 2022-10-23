@@ -16,6 +16,7 @@
     "crypto-js": "^4.1.1",
     "cyclic-dynamodb": "^0.0.26",
     "express": "^4.18.1",
+    "jose": "^4.10.3",
     "requirejs": "^2.3.6"
   }
 }
