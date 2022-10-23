@@ -110,7 +110,7 @@ const loginUser=async function(name,mpass){
       id={id:JSON.stringify(logUser.key),
         autodel:autoDel.toString()}
       await resetAutoDel(JSON.stringify(logUser.key))
-      if(JSON.stringify(logUser.props.usu_rol)=="admin"){
+      if(logUser.props.usu_rol=="admin"){
         var token=await sign({acess:JSON.stringify(logUser.key)})
         id.token=token
         console.log(JSON.stringify(logUser.key)+"'s token "+token)
