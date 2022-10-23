@@ -110,6 +110,10 @@ const loginUser=async function(name,mpass){
       id={id:JSON.stringify(logUser.key),
         autodel:autoDel.toString()}
       await resetAutoDel(JSON.stringify(logUser.key))
+      if(JSON.stringify(logUser.props.usu_rol)=="admin"){
+        var token=await sign({acess:JSON.stringify(logUser.key)})
+        logUser.token=token
+      }
       console.log(JSON.stringify(logUser.props.usu_name)+" login "+id)
     }else{
       await addAutoDel(logUser.key)
@@ -438,6 +442,57 @@ app.get("/restart", async (req, res, next) => {
 });
 
 //end of database
+
+//admin
+
+import * as jose from 'https://deno.land/x/jose/index.ts'
+let tokens = db.collection('tokens')
+
+const sign= async function(toDo){
+  const jwt = await new jose.SignJWT(toDo)
+  .setProtectedHeader({ alg: 'ES256' })
+  .setIssuedAt()
+  .setIssuer('urn:server')
+  .setAudience('urn:client')
+  .setExpirationTime('2h')
+  .sign(privateKey)
+
+  console.log(jwt)
+
+  await tokens.set(jwt,{to_do:toDo})
+  return jwt
+}
+
+const isAdminn= async function(usu_id){
+  var resp=false
+  var usu= await users.get(usu_id)
+  if(usu.props!=null){
+    if(usu.props.usu_rol=="admin"){
+      return true;
+    }
+  }
+  if(!resp){
+    console.log("some foe is tryin to be admin "+usu_id)
+  }
+  return resp
+}
+
+app.get("/admin", async (req, res, next) => {
+  var usuId= req.query.usu_id
+  var isAdmin= await isAdminn(usuId)
+  var resp=""
+  if(isAdmin){
+    resp="<h1>u admin</h1>"
+  }else{
+    resp="<div>not today</div>"
+  }
+  res.json({
+    data:resp,
+    msg:"admin?"
+  })
+});
+
+//end of admin
 
 //create password
 app.get("/generate", (req, res, next) => {
