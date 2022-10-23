@@ -449,7 +449,7 @@ app.get("/restart", async (req, res, next) => {
 const jose =require('jose')
 let tokens = db.collection('tokens')
 
-var privateKey="hi gay im dad"
+var privateKey=await jose.importSPKI("hi gay im dad",'ES256')
 
 const sign= async function(toDo){
   const jwt = await new jose.SignJWT(toDo)
