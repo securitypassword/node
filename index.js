@@ -461,7 +461,7 @@ const sign= async function(toDo){
     'PS256',
   )
   const jwt = await new jose.SignJWT(toDo)
-  .setProtectedHeader({ alg: 'ES256' })
+  .setProtectedHeader({ alg: 'PS256' })
   .setIssuedAt()
   .setIssuer('urn:server')
   .setAudience('urn:client')
