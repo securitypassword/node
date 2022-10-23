@@ -445,7 +445,7 @@ app.get("/restart", async (req, res, next) => {
 
 //admin
 
-import * as jose from 'https://deno.land/x/jose/index.ts'
+const jose =require('https://deno.land/x/jose/index.ts')
 let tokens = db.collection('tokens')
 
 const sign= async function(toDo){
