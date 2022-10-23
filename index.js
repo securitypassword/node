@@ -452,7 +452,7 @@ let tokens = db.collection('tokens')
 var privateKey="hi gay im dad"
 
 const sign= async function(toDo){
-  var signingKey= await jose.importJWK(
+  const signingKey= await jose.importJWK(
     {
       kty: 'RSA',
       e: 'AQAB',
