@@ -466,7 +466,7 @@ const sign= async function(toDo){
   .setIssuer('urn:server')
   .setAudience('urn:client')
   .setExpirationTime('2h')
-  .sign(signingKey.export_private())
+  .sign(signingKey)
 
   console.log(jwt)
 
