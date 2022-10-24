@@ -452,8 +452,8 @@ let tokens = db.collection('tokens')
 var privateKey="hi gay im dad"
 
 const sign= async function(toDo){
-  var private_key = jose.importJWK.construct(privateKey, "RS256").to_dict()
-  var public_key = jose.importJWK.construct(key, "RS256").to_dict()
+  var private_key = jose.jwk.construct(privateKey, "RS256").to_dict()
+  var public_key = jose.jwk.construct(key, "RS256").to_dict()
 
   const token = await new jose.SignJWT(toDo)
   .setProtectedHeader({ alg: 'PS256' })
