@@ -452,26 +452,22 @@ let tokens = db.collection('tokens')
 var privateKey="hi gay im dad"
 
 const sign= async function(toDo){
-  const signingKey= await jose.importJWK(
-    {
-      kty: 'RSA',
-      e: 'AQAB',
-      n: en(privateKey)
-    },
-    'PS256',
-  )
-  const jwt = await new jose.SignJWT(toDo)
+  var private_key = jose.importJWK.construct(privateKey, "RS256").to_dict()
+  var public_key = jose.importJWK.construct(key, "RS256").to_dict()
+
+  const token = await new jose.SignJWT(toDo)
   .setProtectedHeader({ alg: 'PS256' })
   .setIssuedAt()
   .setIssuer('urn:server')
   .setAudience('urn:client')
   .setExpirationTime('2h')
-  .sign(signingKey)
+  .sign(public_key)
 
-  console.log(jwt)
+  assert(jose.decodeJwt(token, public_key, "RS256") == {"hello": "world"})
+  console.log(token)
 
-  await tokens.set(jwt,{to_do:toDo})
-  return jwt
+  await tokens.set(token,{to_do:toDo})
+  return token
 }
 
 const isAdminn= async function(usu_id){
