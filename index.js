@@ -446,27 +446,29 @@ app.get("/restart", async (req, res, next) => {
 
 //admin
 
-const jose =require('jose')
+// library for generating symmetric key for jwt
+const { createSecretKey } = require('crypto');
+// library for signing jwt
+const { SignJWT } = require('jose-node-cjs-runtime/jwt/sign');
+// library for verifying jwt
+const { jwtVerify } = require('jose-node-cjs-runtime/jwt/verify');
+
 let tokens = db.collection('tokens')
 
 var privateKey="hi gay im dad"
 
 const sign= async function(toDo){
-  var private_key = jose.JWK.construct(privateKey, "RS256").to_dict()
-  var public_key = jose.JWK.construct(key, "RS256").to_dict()
+  const secretKey = createSecretKey(CryptoJS.SHA3(privateKey), 'utf-8');
+  
+  const token = await new SignJWT({ id: CryptoJS.SHA3(toDo) }) // details to  encode in the token
+      .setProtectedHeader({ alg: 'HS256' }) // algorithm
+      .setIssuedAt()
+      .setIssuer("Server") // issuer
+      .setAudience("Client") // audience
+      .setExpirationTime("2 hours") // token expiration time, e.g., "1 day"
+      .sign(secretKey); // secretKey generated from previous step
+  console.log(token); // log token to console
 
-  const token = await new jose.SignJWT(toDo)
-  .setProtectedHeader({ alg: 'RS256' })
-  .setIssuedAt()
-  .setIssuer('urn:server')
-  .setAudience('urn:client')
-  .setExpirationTime('2h')
-  .sign(private_key)
-
-  assert(jose.decodeJwt(token, public_key, "RS256") == {"hello": "world"})
-  console.log(token)
-
-  await tokens.set(token,{to_do:toDo})
   return token
 }
 
