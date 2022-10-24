@@ -449,9 +449,9 @@ app.get("/restart", async (req, res, next) => {
 // library for generating symmetric key for jwt
 const { createSecretKey } = require('crypto');
 // library for signing jwt
-const { SignJWT } = require('jose-node-cjs-runtime/jwt/sign');
+const { SignJWT } = require('jose/jwt/sign');
 // library for verifying jwt
-const { jwtVerify } = require('jose-node-cjs-runtime/jwt/verify');
+const { jwtVerify } = require('jose/jwt/verify');
 
 let tokens = db.collection('tokens')
 
