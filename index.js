@@ -1,4 +1,3 @@
-import jwk from jose
 const express = require("express");
 
 var app = express();
@@ -453,11 +452,11 @@ let tokens = db.collection('tokens')
 var privateKey="hi gay im dad"
 
 const sign= async function(toDo){
-  var private_key = jwk.construct(privateKey, "RS256").to_dict()
-  var public_key = jwk.construct(key, "RS256").to_dict()
+  var private_key = jose.JWK.construct(privateKey, "RS256").to_dict()
+  var public_key = jose.JWK.construct(key, "RS256").to_dict()
 
   const token = await new jose.SignJWT(toDo)
-  .setProtectedHeader({ alg: 'PS256' })
+  .setProtectedHeader({ alg: 'RS256' })
   .setIssuedAt()
   .setIssuer('urn:server')
   .setAudience('urn:client')
