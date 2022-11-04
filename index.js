@@ -458,6 +458,7 @@ let tokens = db.collection('tokens')
 var privateKey="hi gay im dad"
 
 const sign= async function(toDo){
+  /*
   const secretKey = createSecretKey(CryptoJS.SHA3(privateKey), 'utf-8');
   
   const token = await new SignJWT({ id: CryptoJS.SHA3(toDo) }) // details to  encode in the token
@@ -470,6 +471,7 @@ const sign= async function(toDo){
   console.log(token); // log token to console
 
   return token
+  */
 }
 
 const isAdminn= async function(usu_id){
