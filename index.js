@@ -445,7 +445,7 @@ app.get("/restart", async (req, res, next) => {
 //end of database
 
 //admin
-
+/*
 // library for generating symmetric key for jwt
 const { createSecretKey } = require('crypto');
 // library for signing jwt
@@ -456,7 +456,7 @@ const { jwtVerify } = require('jose/jwt/verify');
 let tokens = db.collection('tokens')
 
 var privateKey="hi gay im dad"
-
+*/
 const sign= async function(toDo){
   /*
   const secretKey = createSecretKey(CryptoJS.SHA3(privateKey), 'utf-8');
