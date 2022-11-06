@@ -1,4 +1,4 @@
-var Connection = require('tedious').Connection;  
+import { Connection } from 'tedious';  
 var config = {  
     server: 'sql9.freemysqlhosting.net',  //update me
     authentication: {
@@ -23,8 +23,8 @@ connection.on('connect', function(err) {
 
 connection.connect();
 
-var Request = require('tedious').Request;  
-var TYPES = require('tedious').TYPES;  
+import { Request } from 'tedious';  
+import { TYPES } from 'tedious';  
 
 function executeStatement() {  
     request = new Request("SELECT SELECT * FROM `rol`;", function(err) {  
@@ -55,4 +55,5 @@ function executeStatement() {
     connection.execSql(request);  
 }  
 
-module.exports.executeStatement = executeStatement;
+const _executeStatement = executeStatement;
+export { _executeStatement as executeStatement };
