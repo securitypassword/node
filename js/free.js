@@ -38,3 +38,4 @@ var run = function(app){
     });
   });
 }
+module.exports.run = run;
