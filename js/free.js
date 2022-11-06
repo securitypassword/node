@@ -1,9 +1,4 @@
-class free {
-    constructor(){
-        console.log('uwu')
-    }
-}
-free.run = (app) => {
+var run = function(app){
     app.get("/generate", (req, res, next) => {
     var allowed = "";
     if (req.query.low == "true") {
