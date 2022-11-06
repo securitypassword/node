@@ -442,6 +442,15 @@ app.get("/restart", async (req, res, next) => {
   })
 });
 
+
+//relational db
+  var sql = require("./js/sql")
+  app.post('/', function (req, res) {
+    sql.executeStatement()
+    res.send('POST request to the homepage');
+  });
+//end of relational
+
 //end of database
 
 //admin
@@ -554,6 +563,8 @@ app.get("/encode", (req, res, next) => {
 
 //test
 app.get("/", (req, res, next) => {
+  sql.executeStatement()
+  console.log('uwu')
   res.json({msg:"welcome :3"});});
 
 //run this sheet
