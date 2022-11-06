@@ -1,6 +1,8 @@
 var app
-var free = function(app){
-    this.app=app
+class free {
+    constructor(app) {
+        this.app = app;
+    }
 }
 
 app.get("/generate", (req, res, next) => {
@@ -42,4 +44,3 @@ app.get("/generate", (req, res, next) => {
     });
   });
   
-export default free;
