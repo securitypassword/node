@@ -1,3 +1,5 @@
+var CryptoJS = require("crypto-js");
+
 var de = function(text) {
     return CryptoJS.DES.decrypt(
       text.replace(/-/g, "+").replace(/_/g, "/"),
