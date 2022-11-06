@@ -1,4 +1,5 @@
 var CryptoJS = require("crypto-js");
+var key = "i forgor :skull:";
 
 var de = function(text) {
     return CryptoJS.DES.decrypt(
