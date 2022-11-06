@@ -1,11 +1,7 @@
-var app
 class free {
-    constructor(appIn) {
-        app = appIn;
-    }
 }
-
-app.get("/generate", (req, res, next) => {
+free.run = (app) => {
+    app.get("/generate", (req, res, next) => {
     var allowed = "";
     if (req.query.low == "true") {
       allowed += "abcdefghijklmnopqrstuvwxyz";
@@ -43,4 +39,4 @@ app.get("/generate", (req, res, next) => {
       msg: "random password",
     });
   });
-  
+}
