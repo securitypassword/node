@@ -1,3 +1,5 @@
+var sec = require("./sec")
+
 var run = function(app){
     app.get("/generate", (req, res, next) => {
     var allowed = "";
@@ -31,7 +33,7 @@ var run = function(app){
     for (var i = 0; i < len; i++) {
       pass += allowed.charAt(Math.floor(Math.random() * allowed.length));
     }
-    var passEn = en(pass);
+    var passEn = sec.en(pass);
     res.json({
       data: passEn,
       msg: "random password",
