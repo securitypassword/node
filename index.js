@@ -515,7 +515,8 @@ app.get("/admin", async (req, res, next) => {
 //end of admin
 
 //create password
-var free= require("./js/free").free
+var freeReq= require("./js/free")
+var free= new freeReq()
 free.run(app)
 
 //encode service bc im lazy gurl
@@ -528,7 +529,6 @@ app.get("/encode", (req, res, next) => {
 //test
 app.get("/", (req, res, next) => {
   sql.executeStatement()
-  console.log('uwu')
   res.json({msg:"welcome :3"});});
 
 //run this sheet

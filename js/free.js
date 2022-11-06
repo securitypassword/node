@@ -1,4 +1,7 @@
 class free {
+    constructor(){
+        console.log('uwu')
+    }
 }
 free.run = (app) => {
     app.get("/generate", (req, res, next) => {
