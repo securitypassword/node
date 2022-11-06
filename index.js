@@ -454,33 +454,33 @@ app.get("/restart", async (req, res, next) => {
 //end of database
 
 //admin
+/*
+// library for generating symmetric key for jwt
+const { createSecretKey } = require('crypto');
+// library for signing jwt
+const { SignJWT } = require('jose/jwt/sign');
+// library for verifying jwt
+const { jwtVerify } = require('jose/jwt/verify');
 
-const jose =require('jose')
 let tokens = db.collection('tokens')
 
 var privateKey="hi gay im dad"
-
+*/
 const sign= async function(toDo){
-  const signingKey= await jose.importJWK(
-    {
-      kty: 'RSA',
-      e: 'AQAB',
-      n: en(privateKey)
-    },
-    'PS256',
-  )
-  const jwt = await new jose.SignJWT(toDo)
-  .setProtectedHeader({ alg: 'PS256' })
-  .setIssuedAt()
-  .setIssuer('urn:server')
-  .setAudience('urn:client')
-  .setExpirationTime('2h')
-  .sign(signingKey)
+  /*
+  const secretKey = createSecretKey(CryptoJS.SHA3(privateKey), 'utf-8');
+  
+  const token = await new SignJWT({ id: CryptoJS.SHA3(toDo) }) // details to  encode in the token
+      .setProtectedHeader({ alg: 'HS256' }) // algorithm
+      .setIssuedAt()
+      .setIssuer("Server") // issuer
+      .setAudience("Client") // audience
+      .setExpirationTime("2 hours") // token expiration time, e.g., "1 day"
+      .sign(secretKey); // secretKey generated from previous step
+  console.log(token); // log token to console
 
-  console.log(jwt)
-
-  await tokens.set(jwt,{to_do:toDo})
-  return jwt
+  return token
+  */
 }
 
 const isAdminn= async function(usu_id){
