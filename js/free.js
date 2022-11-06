@@ -1,7 +1,7 @@
 var app
 class free {
-    constructor(app) {
-        this.app = app;
+    constructor(appIn) {
+        app = appIn;
     }
 }
 
