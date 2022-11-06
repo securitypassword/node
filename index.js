@@ -515,7 +515,7 @@ app.get("/admin", async (req, res, next) => {
 //end of admin
 
 //create password
-var free= require("./js/free")
+var free= require("./js/free").free
 free.run(app)
 
 //encode service bc im lazy gurl
