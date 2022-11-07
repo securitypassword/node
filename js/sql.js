@@ -8,11 +8,12 @@ const executeSQL = (sql, callback) => {
       },
       "type": "default"
     },
-    "server": "sql9.freemysqlhosting.net:3306",
+    "server": "sql9.freemysqlhosting.net",
     "options": {
       "validateBulkLoadParameters": false,
       "rowCollectionOnRequestCompletion": true,
-      "database": "DATABASE",
+      "database": "sql9540023",
+      "port" : "3306",
       "encrypt": true
     }
   });
