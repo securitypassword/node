@@ -12,9 +12,11 @@ var con = mysql.createConnection({
 
 
 const executeStatement = function(){
+    console.log("connect uwu")
     con.connect(function(err) {
         if (err) throw err;
         console.log("Connected!");
       });
+      console.log("end connect uwu")
 }
 module.exports.executeStatement = executeStatement;
