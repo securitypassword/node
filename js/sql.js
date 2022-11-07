@@ -5,6 +5,7 @@ var con = mysql.createConnection({
     database: "sql9540023",
     user: "sql9540023",
     password: "Y2TNk21TwE",
+    connectTimeout: 5000,
     port: 3306
   });
   
