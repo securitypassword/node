@@ -5,21 +5,9 @@ var app = express();
 const PORT = process.env.PORT;
 
 //security
-var CryptoJS = require("crypto-js");
-var key = "i forgor :skull:";
-
-function de(text) {
-  return CryptoJS.DES.decrypt(
-    text.replace(/-/g, "+").replace(/_/g, "/"),
-    key
-  ).toString(CryptoJS.enc.Utf8);
-};
-function en(text) {
-  return CryptoJS.DES.encrypt(text, key)
-    .toString()
-    .replace(/\+/g, "-")
-    .replace(/\//g, "_");
-};
+var sec = require("./js/sec")
+var de = sec.de
+var en = sec.en
 //end of security
 
 //global
