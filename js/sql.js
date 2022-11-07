@@ -13,6 +13,7 @@ var con = mysql.createConnection({
 const executeStatement = function(){
     console.log("connect uwu")
     con.query("SELECT * FROM rol", function (err, result, fields) {
+        console.log("uwu")
         if (err) throw err;
         console.log(result);
       });
