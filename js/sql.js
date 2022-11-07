@@ -12,11 +12,13 @@ var con = mysql.createConnection({
 
 const executeStatement = function(){
     console.log("connect uwu")
+    var res=""
     con.query("SELECT * FROM rol", function (err, result, fields) {
-        console.log("uwu")
         if (err) throw err;
         console.log(result);
+        res=result
       });
+      console.log(res)
     console.log("end connect uwu")
 }
 module.exports.executeStatement = executeStatement;
