@@ -13,7 +13,7 @@ const executeSQL = (sql, callback) => {
       "validateBulkLoadParameters": false,
       "rowCollectionOnRequestCompletion": true,
       "database": "sql9540023",
-      "port" : "3306",
+      "port" : 3306,
       "encrypt": true
     }
   });
