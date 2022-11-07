@@ -32,7 +32,7 @@ const executeStatement = function(){
     executeSQL("SELECT * FROM users", (err, data) => {
     if (err)
         console.error(err);
-    console.log(data.rowCount);
+    console.log(data);
     });
 }
 module.exports.executeStatement = executeStatement;
