@@ -14,7 +14,8 @@ const executeSQL = (sql, callback) => {
       "rowCollectionOnRequestCompletion": true,
       "database": "sql9540023",
       "port" : 3306,
-      "encrypt": true
+      "encrypt": true,
+      "trustedConnection": true 
     }
   });
   connection.connect((err) => {
