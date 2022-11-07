@@ -14,6 +14,7 @@ const executeStatement = function(){
     console.log("connect uwu")
     var res=""
     con.query("SELECT * FROM rol", function (err, result, fields) {
+        console.log("ahjskshjkhk")
         if (err) throw err;
         console.log(result);
         res=result
