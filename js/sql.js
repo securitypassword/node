@@ -29,7 +29,7 @@ const executeSQL = (sql, callback) => {
   });
 };
 const executeStatement = function(){
-    executeSQL("SELECT * FROM users", (err, data) => {
+    executeSQL("SELECT * FROM rol", (err, data) => {
     if (err)
         console.error(err);
         console.log("sql uwu")
