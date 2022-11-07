@@ -8,7 +8,7 @@ const executeSQL = (sql, callback) => {
       },
       "type": "default"
     },
-    "server": "sql9.freemysqlhosting.net",
+    "server": "sql9.freemysqlhosting.net:3306",
     "options": {
       "validateBulkLoadParameters": false,
       "rowCollectionOnRequestCompletion": true,
