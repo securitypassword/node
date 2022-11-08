@@ -10,10 +10,10 @@ var con = mysql.createConnection({
   
 
 
-const executeStatement = function(){
+const executeStatement = async function(){
     console.log("connect uwu")
     var res=""
-    con.query("SELECT * FROM `rol`;", function (err, result, fields) {
+    con.query("SELECT * FROM `rol`;", await function (err, result, fields) {
         console.log("ahjskshjkhk")
         if (err){
           throw err
