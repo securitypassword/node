@@ -487,8 +487,8 @@ app.get("/encode", (req, res, next) => {
 });
 
 //test
-app.get("/", async (req, res, next) => {
-  await sql.executeStatement()
+app.get("/", (req, res, next) => {
+  sql.executeStatement()
   res.json({msg:"welcome :3"});});
 
 //run this sheet
