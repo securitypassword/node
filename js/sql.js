@@ -25,4 +25,18 @@ const executeStatement = async function(){
       console.log(res)
     console.log("end connect uwu")
 }
+const sql = async function(command){
+  console.log("connect uwu")
+  var res=""
+  con.query(command+";", await function (err, result, fields) {
+      if (err){
+        throw err
+      };
+      console.log("result from sql");
+      console.log(result);
+      res=JSON.parse(result)
+      console.log(res)
+    });
+  console.log("end connect uwu")
+}
 module.exports.executeStatement = executeStatement;
