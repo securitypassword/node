@@ -17,7 +17,7 @@ const executeStatement = function(){
         console.log("ahjskshjkhk")
         if (err) throw err;
         console.log(fields)
-        console.log(result);
+        console.log("result "+result);
         res=result
       });
       console.log(res)
