@@ -24,9 +24,19 @@ var run = function(app){
     if (req.query.char == "true") {
       allowed += "!#$%&/()=?*";
     }
-    if (req.query.rect == "true") {
-      allowed += "■▀▄█▓▒░";
-    }
+    //funeral vikingo
+    /*
+                      ||\\\
+                      ||\\\\\
+                      ||\/*\\\
+                      ||\\\\\\\
+                      ||
+                      ||
+          /*\         ||          /*\     /*\     /*\
+    \\\\  if (req.query.rect == "true") {       \\\\\\
+      \\\\\\  allowed += "■▀▄█▓▒░";}  /*\  \\\\\\\\\
+          \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+    */
     var len = parseInt(req.query.len);
     var pass = "";
   
