@@ -29,13 +29,13 @@ const sql = async function(command){
   console.log("connect uwu")
   console.log("sql "+command)
   var res=""
-  res = await con.query(command+";", await function (err, result, fields) {
+  await con.query(command+";", await function (err, result, fields) {
       if (err){
         throw err
       };
       console.log("result from sql");
       console.log(result);
-      return result
+      res=result
     })
   console.log("end connect uwu")
   return res
