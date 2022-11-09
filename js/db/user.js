@@ -17,10 +17,10 @@ const usersEmptyId = async function(){
   console.log("user empty id")
     let newId=1
     let empty=""
-    console.log("9 "+newId)
     while(empty==void(0)||empty==""){
+      newId=Math.random
       console.log("0 "+newId)
-      newId=Math.random*1000000
+      newId=newId*1000000
       console.log("1 "+newId)
       newId=parseInt(Math.floor(newId))
       console.log("2 "+newId)
