@@ -40,6 +40,7 @@ const sql = async function(command){
  
     console.log("rows")
     console.log(row)
+    res=row
     con.resume();
   })
   .on('end', function() {
