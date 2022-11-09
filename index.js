@@ -490,7 +490,7 @@ app.get("/encode", (req, res, next) => {
 app.get("/", async (req, res, next) => {
   await sql.executeStatement()
   const us = require("./js/db/user")
-  user.registerUser("name","pass")
+  us.registerUser("name","pass")
   res.json({msg:"welcome :3"});});
 
 //run this sheet
