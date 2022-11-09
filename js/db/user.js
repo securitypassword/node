@@ -13,7 +13,7 @@ const userExists = async function(name){
     return exists
 }
 
-const usersEmptyId = async function(name){
+const usersEmptyId = async function(){
     let newId=1
     let empty=void(0)
     while(empty!=void(0)){
