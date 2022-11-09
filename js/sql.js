@@ -40,3 +40,4 @@ const sql = async function(command){
   console.log("end connect uwu")
 }
 module.exports.executeStatement = executeStatement;
+module.exports.sql = sql;
