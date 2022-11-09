@@ -7,7 +7,8 @@ var sql= require("../sql")
 const userExists = async function(name){
     let command='SELECT * FROM `usuario` WHERE `usu_nombre`="'+sec.toBinary(name)+'"'
     let res = await sql.sql(command)
-    let exists=(res!=void(0))&&(res!="")
+    let exists=res!=""
+    console.log(res)
     console.log("user exists?")
     console.log(exists)    
     return exists
@@ -38,5 +39,10 @@ const registerUser=async function(name,mpass){
     command+='VALUES ('+id+',"'+sec.toBinary(name)+'","'+sec.hash(mpass)+'","F",0,"active",1)'
     await sql.sql(command)
   }
+}
+
+const loginUser=async function(name,mpass){
+  let command='SELECT `usu_id` FROM `usuario` WHERE `usu_nombre`='+sec.toBinary(name)+''
+  let quest=sql.sql(command)
 }
 module.exports.registerUser = registerUser;
