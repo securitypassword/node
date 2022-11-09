@@ -9,7 +9,7 @@ const userExists = async function(name){
     let res = await sql.sql(command)
     console.log("user exists")
     console.log(res)    
-    return res==void(0)
+    return res!=void(0)
 }
 
 const usersEmptyId = async function(name){
