@@ -5,7 +5,7 @@ var sec = require("../sec")
 var sql= require("../sql")
 
 const userExists = async function(name){
-    let command="SELECT * FROM `usuario` WHERE `usu_nombre`=`"+sec.toBinary(name)+"`"
+    let command='SELECT * FROM `usuario` WHERE `usu_nombre`="'+sec.toBinary(name)+'"'
     let res = await sql.sql(command)
     console.log("user exists?")
     console.log(res)    
