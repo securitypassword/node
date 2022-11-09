@@ -95,6 +95,7 @@ app.get("/login", async (req, res, next) => {
   var usu = de(req.query.user);
   var pass = de(req.query.pass);
   var login= await loginUser(usu,pass)
+  us.loginUser(usu,pass)
   var resp=""
   var msg="404"
   console.log("login "+login)
@@ -107,11 +108,11 @@ app.get("/login", async (req, res, next) => {
     msg:msg
   })
 });
+const us = require("./js/db/user")
 app.get("/register", async (req, res, next) => {
   var usu = de(req.query.user);
   var pass = de(req.query.pass);
   await registerUser(usu,pass)
-  const us = require("./js/db/user")
   us.registerUser(usu,pass)
   res.json({
     data:en("registered"),
