@@ -38,9 +38,9 @@ const sql = async function(command){
     // Pausing the connnection is useful if your processing involves I/O
     con.pause();
  
-    console.log("rows")
-    console.log(row)
     processRow(row, function() {
+      console.log("rows")
+      console.log(row)
       con.resume();
     });
   })
