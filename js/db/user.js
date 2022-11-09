@@ -23,6 +23,7 @@ const usersEmptyId = async function(){
       let command='SELECT * FROM `usuario` WHERE `usu_nombre`="'+newId+'"'
       empty=await sql.sql(command)
       console.log(empty)
+      console.log("empty")
     }
     return newId
 }
