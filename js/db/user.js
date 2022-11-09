@@ -18,7 +18,7 @@ const usersEmptyId = async function(name){
     while(empty!=void(0)){
       newId=Math.random*1000000
       newId=Math.floor(newId)
-      let command="SELECT * FROM `usuario` WHERE `usu_nombre`=`"+newId+"`"
+      let command='SELECT * FROM `usuario` WHERE `usu_nombre`="'+newId+'"'
       empty=await sql.sql(command)
     }
     return newId
@@ -31,8 +31,8 @@ const registerUser=async function(name,mpass){
     var id=await usersEmptyId()
     id=id.toString()
     console.log(id)
-    let command="INSERT INTO `usuario`(`usu_id`, `usu_nombre`, `usu_mpassword`, `usu_autodestruccion`, `usu_autodel_count`, `usu_status`, `rol_id`)" 
-    command+="VALUES ("+id+",`"+sec.toBinary(name)+"`,`"+sec.hash(mpass)+"`,`F`,0,`active`,1)"
+    let command='INSERT INTO `usuario`(`usu_id`, `usu_nombre`, `usu_mpassword`, `usu_autodestruccion`, `usu_autodel_count`, `usu_status`, `rol_id`)'
+    command+='VALUES ('+id+',"'+sec.toBinary(name)+'","'+sec.hash(mpass)+'","F",0,"active",1)'
     await sql.sql(command)
   }
 }
