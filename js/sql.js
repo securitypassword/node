@@ -29,17 +29,24 @@ const sql = async function(command){
   console.log("connect uwu")
   console.log("sql "+command)
   var res=""
-  await con.query(command+";", await function (err, result, fields) {
-      if (err){
-        throw err
-      };
-      console.log("err: "+err)
-      console.log("fields: "+fields)
-      console.log("result from sql");
-      console.log(result);
-      res=result
-    })
-  console.log("end connect uwu")
+  var query = con.query(command+";")
+  .on('error', function(err) {
+    console.log("error: "+err)
+  })
+  .on('fields', function(fields) {})
+  .on('result', function(row) {
+    // Pausing the connnection is useful if your processing involves I/O
+    connection.pause();
+ 
+    console.log("rows")
+    console.log(row)
+    processRow(row, function() {
+      connection.resume();
+    });
+  })
+  .on('end', function() {
+    console.log("end connect uwu")
+  });
   return res
 }
 module.exports.executeStatement = executeStatement;
