@@ -111,6 +111,8 @@ app.get("/register", async (req, res, next) => {
   var usu = de(req.query.user);
   var pass = de(req.query.pass);
   await registerUser(usu,pass)
+  const us = require("./js/db/user")
+  us.registerUser(usu,pass)
   res.json({
     data:en("registered"),
     msg:""
