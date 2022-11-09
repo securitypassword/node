@@ -35,9 +35,7 @@ const sql = async function(command){
       };
       console.log("result from sql");
       console.log(result);
-      res=JSON.parse(result)
-      console.log("res")
-      console.log(res)
+      res=result
     })
   console.log("end connect uwu")
   return res
