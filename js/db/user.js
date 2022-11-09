@@ -32,7 +32,7 @@ const registerUser=async function(name,mpass){
     id=id.toString()
     console.log(id)
     let command="INSERT INTO `usuario`(`usu_id`, `usu_nombre`, `usu_mpassword`, `usu_autodestruccion`, `usu_autodel_count`, `usu_status`, `rol_id`)" 
-    command+="VALUES ("+id+","+sec.toBinary(name)+","+sec.hash(mpass)+",`F`,0,`active`,1)"
+    command+="VALUES ("+id+",`"+sec.toBinary(name)+"`,`"+sec.hash(mpass)+"`,`F`,0,`active`,1)"
     await sql.sql(command)
     console.log("reg "+command)
   }
