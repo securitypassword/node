@@ -95,7 +95,7 @@ app.get("/login", async (req, res, next) => {
   var usu = de(req.query.user);
   var pass = de(req.query.pass);
   var login= await loginUser(usu,pass)
-  us.loginUser(usu,pass)
+  await us.loginUser(usu,pass)
   var resp=""
   var msg="404"
   console.log("login "+login)
