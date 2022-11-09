@@ -14,6 +14,7 @@ const userExists = async function(name){
 }
 
 const usersEmptyId = async function(){
+  console.log("user empty id")
     let newId=1
     let empty=void(0)
     while(empty!=void(0)){
