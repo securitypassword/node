@@ -15,8 +15,7 @@ const userExists = async function(name){
 
 const usersEmptyId = async function(){
   console.log("user empty id")
-    let newId=0
-    newId+=1
+    let newId=1
     let empty=""
     console.log("9 "+newId)
     while(empty==void(0)||empty==""){
