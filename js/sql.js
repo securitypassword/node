@@ -36,10 +36,11 @@ const sql = async function(command){
       console.log("result from sql");
       console.log(result);
       res=JSON.parse(result)
+      console.log("res")
       console.log(res)
-      return res
-    });
+    })
   console.log("end connect uwu")
+  return res
 }
 module.exports.executeStatement = executeStatement;
 module.exports.sql = sql;
