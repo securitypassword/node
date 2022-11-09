@@ -4,6 +4,26 @@ var sec = require("../sec")
 
 var sql= require("../sql")
 
+const userExists = async function(name){
+    let command="SELECT * FROM `usuario` WHERE `usu_nombre`=`"+sec.toBinary(name)+"`"
+    let res = await sql.sql(command)
+    console.log("user exists")
+    console.log(res)    
+    return res.length>0
+}
+
+const usersEmptyId = async function(name){
+    let newId=1
+    let empty=""
+    while(empty.length>-0){
+      newId=Math.random*1000000
+      newId=Math.floor(newId)
+      let command="SELECT * FROM `usuario` WHERE `usu_nombre`=`"+newId+"`"
+      empty=await sql.sql(command)
+    }
+    return newId
+}
+
 const registerUser=async function(name,mpass){
   console.log("registering "+name)
   var exists=await userExists(name)
@@ -16,5 +36,4 @@ const registerUser=async function(name,mpass){
     await sql.sql(command)
   }
 }
-
 module.exports.registerUser = registerUser;
