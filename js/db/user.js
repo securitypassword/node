@@ -18,8 +18,8 @@ const usersEmptyId = async function(){
     let newId=1
     let empty=""
     while(empty==void(0)||empty==""){
-      newId=Math.random*1000000
-      newId=Math.floor(newId)
+      newId=parseInt(Math.random*1000000)
+      newId=parseInt(Math.floor(newId))
       let command='SELECT * FROM `usuario` WHERE `usu_id`="'+newId+'"'
       empty=await sql.sql(command)
       console.log(empty)
