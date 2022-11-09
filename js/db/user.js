@@ -44,7 +44,7 @@ const registerUser=async function(name,mpass){
 const loginUser=async function(name,mpass){
   let command='SELECT `usu_id` FROM `usuario` WHERE `usu_nombre`="'+sec.toBinary(name)+'"'
   let quest=await sql.sql(command)
-  console.log("login")
+  console.log("login sql")
   console.log(quest)
 }
 module.exports.registerUser = registerUser;
