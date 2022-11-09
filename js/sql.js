@@ -36,12 +36,12 @@ const sql = async function(command){
   .on('fields', function(fields) {})
   .on('result', function(row) {
     // Pausing the connnection is useful if your processing involves I/O
-    connection.pause();
+    con.pause();
  
     console.log("rows")
     console.log(row)
     processRow(row, function() {
-      connection.resume();
+      con.resume();
     });
   })
   .on('end', function() {
