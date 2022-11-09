@@ -14,8 +14,8 @@ const userExists = async function(name){
 
 const usersEmptyId = async function(name){
     let newId=1
-    let empty=""
-    while(res!=void(0)){
+    let empty=void(0)
+    while(empty!=void(0)){
       newId=Math.random*1000000
       newId=Math.floor(newId)
       let command="SELECT * FROM `usuario` WHERE `usu_nombre`=`"+newId+"`"
