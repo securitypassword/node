@@ -25,14 +25,16 @@ const executeStatement = async function(){
       console.log(res)
     console.log("end connect uwu")
 }
-const sql = function(command){
+const sql = async function(command){
   console.log("connect uwu")
   console.log("sql "+command)
   var res=""
-  con.query(command+";", function (err, result, fields) {
+  await con.query(command+";", await function (err, result, fields) {
       if (err){
         throw err
       };
+      console.log("err: "+err)
+      console.log("fields: "+fields)
       console.log("result from sql");
       console.log(result);
       res=result

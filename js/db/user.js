@@ -6,7 +6,7 @@ var sql= require("../sql")
 
 const userExists = async function(name){
     let command='SELECT * FROM `usuario` WHERE `usu_nombre`="'+sec.toBinary(name)+'"'
-    let res = sql.sql(command)
+    let res = await sql.sql(command)
     let exists=res!=""
     console.log(res)
     console.log("user exists?")
@@ -21,7 +21,7 @@ const usersEmptyId = async function(){
     while(empty!=""){
       newId=Math.floor(parseInt(Math.random()*10000))
       let command='SELECT * FROM `usuario` WHERE `usu_id`="'+newId+'"'
-      empty=sql.sql(command)
+      empty=await sql.sql(command)
       console.log(empty)
       console.log("empty")
     }
