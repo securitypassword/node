@@ -25,7 +25,7 @@ const executeStatement = async function(){
       console.log(res)
     console.log("end connect uwu")
 }
-const sql = async function(command){
+const sql = function(command){
   console.log("connect uwu")
   console.log("sql "+command)
   var res=""
