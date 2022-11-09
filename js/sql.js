@@ -27,6 +27,7 @@ const executeStatement = async function(){
 }
 const sql = async function(command){
   console.log("connect uwu")
+  console.log("sql "+command)
   var res=""
   con.query(command+";", await function (err, result, fields) {
       if (err){
@@ -36,6 +37,7 @@ const sql = async function(command){
       console.log(result);
       res=JSON.parse(result)
       console.log(res)
+      return res
     });
   console.log("end connect uwu")
 }
