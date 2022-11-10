@@ -32,7 +32,7 @@ const sql = async function(command){
   console.log("sql "+command)
   var res=[]
   var query = con.query(command+";")
-   query.on('error', function(err) {
+  await query.on('error', function(err) {
     console.log("error: "+err)
   })
   .on('fields', function(fields) {})
