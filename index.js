@@ -113,7 +113,7 @@ app.get("/register", async (req, res, next) => {
   var usu = de(req.query.user);
   var pass = de(req.query.pass);
   await registerUser(usu,pass)
-  us.registerUser(usu,pass)
+  await us.registerUser(usu,pass)
   res.json({
     data:en("registered"),
     msg:""
