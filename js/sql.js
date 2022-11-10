@@ -1,4 +1,4 @@
-var mysql = require('mysql2');
+var mysql = require('mysql');
 
 var con = mysql.createConnection({
     host: "sql9.freemysqlhosting.net",
@@ -13,14 +13,14 @@ var con = mysql.createConnection({
 const executeStatement = async function(){
     console.log("connect uwu test")
     var res=""
-    await con.promise().query("SELECT * FROM `rol`;").then( function (err, result, fields) {
+    con.query("SELECT * FROM `rol`;", function (err, result, fields) {
         if (err){
           throw err
         };
         console.log("result");
         console.log(result);
         res=result
-      }).catch(function(){});
+      });
       console.log(res)
     console.log("end connect uwu test")
     return res
