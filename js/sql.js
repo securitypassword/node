@@ -31,11 +31,11 @@ const sql = async function(command){
   console.log("sql "+command)
   var res=[]
   var query = con.query(command+";")
-  query.on('error', function(err) {
+  await query.on('error',await function(err) {
     console.log("error: "+err)
   })
-  .on('fields', function(fields) {})
-  .on('result', function(row) {
+  .on('fields',await function(fields) {})
+  .on('result',await function(row) {
     // Pausing the connnection is useful if your processing involves I/O
     con.pause();
  
@@ -44,7 +44,7 @@ const sql = async function(command){
     res.push(row)
     con.resume();
   })
-  .on('end', function() {
+  .on('end',await function() {
     console.log("end connect uwu")
   });
   console.log("result sql")
