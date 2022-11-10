@@ -20,7 +20,7 @@ const executeStatement = async function(){
         console.log("result");
         console.log(result);
         res=result
-      });
+      }).catch(function(){});
       console.log(res)
     console.log("end connect uwu test")
     return res
