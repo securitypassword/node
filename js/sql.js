@@ -46,6 +46,7 @@ const sql = async function(command){
   .on('end', function() {
     console.log("end connect uwu")
   });
+  await executeStatement()
   console.log("result sql")
   console.log(res)
   return res
