@@ -24,9 +24,11 @@ const executeStatement = async function(){
       });
       console.log(res)
     console.log("end connect uwu")
+    return res
 }
 const sql = async function(command){
-  await executeStatement()
+  let test = await executeStatement()
+  console.log(test)
   console.log("connect uwu")
   console.log("sql "+command)
   var res=[]
