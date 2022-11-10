@@ -13,7 +13,7 @@ var con = mysql.createConnection({
 const executeStatement = async function(){
     console.log("connect uwu test")
     var res=""
-    con.connect(function(err) {
+    con.connect( await function(err) {
       if (err) throw err;
       con.query("SELECT * FROM `rol`;", function (err, result, fields) {
           if (err){
