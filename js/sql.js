@@ -13,9 +13,9 @@ var con = mysql.createConnection({
 const executeStatement = async function(){
     console.log("connect uwu test")
     var res=""
-    con.connect( await function(err) {
+    await con.connect(  function(err) {
       if (err) throw err;
-      con.query("SELECT * FROM `rol`;", function (err, result, fields) {
+       con.query("SELECT * FROM `rol`;", function (err, result, fields) {
           if (err){
             throw err
           };
