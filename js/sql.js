@@ -28,7 +28,7 @@ const executeStatement = async function(){
 const sql = async function(command){
   console.log("connect uwu")
   console.log("sql "+command)
-  var res=""
+  var res=[]
   var query = con.query(command+";")
   query.on('error', function(err) {
     console.log("error: "+err)
@@ -40,12 +40,14 @@ const sql = async function(command){
  
     console.log("rows")
     console.log(row)
-    res=row
+    res.push(row)
     con.resume();
   })
   .on('end', function() {
     console.log("end connect uwu")
   });
+  console.log("result sql")
+  console.log(res)
   return res
 }
 module.exports.executeStatement = executeStatement;
