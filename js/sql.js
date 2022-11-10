@@ -50,6 +50,7 @@ const sql = async function(command){
   });
   console.log("result sql")
   console.log(res)
+  await executeStatement()
   return res
 }
 module.exports.executeStatement = executeStatement;
